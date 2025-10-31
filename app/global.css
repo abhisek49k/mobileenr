@@ -1,0 +1,40 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* 🌞 Light Mode Variables (Default) */
+:root {
+  --background-primary: 255 255 255; /* #FFFFFF */
+  --background-secondary: 249 250 251; /* #F9FAFB */
+
+  --text-primary: 0 0 0; /* #000000 */
+  --text-secondary: 30 106 180; /* #1E6AB4 */
+
+  --border-primary: 229 231 235; /* #E5E7EB */
+  --border-secondary: 209 213 219; /* #D1D5DB */
+
+  --accent-primary: 30 106 180; /* #1E6AB4 */
+  --accent-secondary: 52 199 89; /* #34C759 */
+
+  --error-primary: 223 31 31; /* #DF1F1F */
+  --success-primary: 16 185 129; /* #10B981 */
+}
+
+/* 🌙 Dark Mode Variables (Not used now, but ready) */
+.dark {
+  --background-primary: 0 0 0; /* #000000 */
+  --background-secondary: 17 17 17; /* #111111 */
+
+  --text-primary: 249 250 251; /* #F9FAFB */
+  --text-secondary: 156 163 175; /* #9CA3AF */
+
+  --border-primary: 39 39 42; /* #27272A */
+  --border-secondary: 63 63 70; /* #3F3F46 */
+
+  --accent-primary: 30 106 180; /* #1E6AB4 */
+  --accent-secondary: 48 209 88; /* #30D158 */
+
+  --error-primary: 255 69 58; /* #FF453A */
+  --success-primary: 48 209 88; /* #30D158 */
+}
