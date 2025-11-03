@@ -44,6 +44,8 @@ export default function RootLayout() {
             options={{ headerShown: false }} 
           />
         </Stack.Protected>
+
+        <Stack.Screen name="components" options={{ headerShown: false }}  />
       </Stack>
       <StatusBar style="auto" />
     </>

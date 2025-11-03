@@ -3,10 +3,14 @@ export const lightColors = {
   // Backgrounds
   backgroundPrimary: "#FFFFFF",
   backgroundSecondary: "#F9FAFB",
+  backgroundIcon: '#E3E2E7',
 
   // Text
   textPrimary: "#000000",
   textSecondary: "#1E6AB4",
+  textIcon: '#FFFFFF',
+
+  iconPrimary: "#929498",
 
   // Borders
   borderPrimary: "#E5E7EB",
@@ -27,6 +31,9 @@ export const darkColors = {
 
   textPrimary: "#F9FAFB",
   textSecondary: "#9CA3AF",
+  textIcon: '#000000',
+
+  iconPrimary: "#6B7280",
 
   borderPrimary: "#27272A",
   borderSecondary: "#3F3F46",

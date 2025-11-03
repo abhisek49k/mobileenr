@@ -13,10 +13,13 @@ module.exports = {
         // Background
         "background-primary": "rgb(var(--background-primary) / <alpha-value>)",
         "background-secondary": "rgb(var(--background-secondary) / <alpha-value>)",
+        "background-icon": "rgb(var(--background-icon) / <alpha-value>)",
 
         // Text
         "text-primary": "rgb(var(--text-primary) / <alpha-value>)",
         "text-secondary": "rgb(var(--text-secondary) / <alpha-value>)",
+        "text-icon": "rgb(var(--text-icon) / <alpha-value>)",
+        "icon-primary": "rgb(var(--icon-primary) / <alpha-value>)",
 
         // Borders
         "border-primary": "rgb(var(--border-primary) / <alpha-value>)",

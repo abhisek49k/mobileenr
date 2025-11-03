@@ -1,12 +1,13 @@
-import { View, Text, TouchableOpacity } from "react-native";
+import { View, Text, TouchableOpacity, Pressable } from "react-native";
 import { Link, useRouter } from "expo-router";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { Button } from "@/components/ui/Button";
 import Header from "@/components/ui/Header";
+import { DropdownMenu, DropdownMenuCheckboxItem, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuRadioItem, DropdownMenuTrigger } from "@/components/ui/Dropdown";
+import Entypo from '@expo/vector-icons/Entypo';
+
 
 export default function LoginScreen() {
-
-  const insets = useSafeAreaInsets();
   const route = useRouter();
 
   return (
@@ -24,7 +25,7 @@ export default function LoginScreen() {
 
         <Button
           className="w-96 mt-6 bg-accent-primary px-6 py-4 rounded-2xl"
-          onPress={() => route.push("/forgot-password")}
+          onPress={() => route.push("/components")}
           asChild
         >
           <Text className="text-white font-medium">Login</Text>

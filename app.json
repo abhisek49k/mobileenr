@@ -45,6 +45,12 @@
             "node_modules/@expo-google-fonts/open-sans/700Bold/OpenSans_700Bold.ttf"
           ]
         }
+      ],
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "This app requires access to your photos to allow you to upload, attach, or share images related to debris records and project documentation.."
+        }
       ]
     ],
     "experiments": {
