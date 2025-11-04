@@ -1,4 +1,4 @@
-import { Pressable, StyleSheet, Text, View } from 'react-native'
+import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native'
 import React, { useCallback, useState } from 'react'
 import {
     DropdownMenu,
@@ -15,21 +15,41 @@ import Button from '@/components/ui/Button';
 import Header from '@/components/ui/Header';
 import ImageUploader, { ImageAsset } from '@/components/ui/ImageUploader';
 import { Dialog } from '@/components/ui/Dialog';
+import { AtSign, CirclePlus, Eye, EyeOff, KeyRound, RefreshCcw, Search } from 'lucide-react-native';
+import { useThemeColors } from '@/hooks/useThemeColors';
+import { Switch } from '@/components/ui/Switch';
+import { Toggle } from '@/components/ui/Toggle';
+import { TextField } from '@/components/ui/TextField';
+import { Label } from '@/components/ui/Label';
 
-let imageCounter = 0;
 
 const Components = () => {
+
     const router = useRouter();
+    const colorTheme = useThemeColors();
     const [images, setImages] = useState<ImageAsset[]>([]);
     const [isOpen, setIsOpen] = useState(false);
+    const [isNotificationsEnabled, setIsNotificationsEnabled] = useState(true);
+    const [selection, setSelection] = useState("yes");
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [comment, setComment] = useState('');
 
     // The parent's only job is to update its state when the child says so.
     const handleImagesChanged = (updatedImages: ImageAsset[]) => {
         setImages(updatedImages);
     };
 
+    // --- 1. State for password visibility ---
+    const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+
+    // --- 2. Function to toggle the state ---
+    const togglePasswordVisibility = () => {
+        setIsPasswordVisible(prevState => !prevState);
+    };
+
     return (
-        <View className='flex-1 bg-background-primary'>
+        <ScrollView className='bg-background-primary'>
             <Header
                 headerLeft={<Text className="text-lg font-semibold text-white">Components</Text>}
             />
@@ -77,9 +97,9 @@ const Components = () => {
             <Dialog.Root open={isOpen} onOpenChange={setIsOpen} enableAndroidBlur={true}>
                 <Dialog.Trigger>
                     <Pressable
-                        className={`px-4 py-2.5 rounded-lg bg-accent-primary`}
+                        className={`w-32 flex justify-center px-4 py-2.5 rounded-lg bg-accent-primary`}
                     >
-                        <Text className={`font-semibold text-text-primary`}>
+                        <Text className={`font-semibold text-text-icon`}>
                             Open Dialog
                         </Text>
                     </Pressable>
@@ -98,10 +118,10 @@ const Components = () => {
                             <Text className="text-text-secondary">This is the main body content of the dialog.</Text>
                         </View>
 
-                        <Dialog.Footer>
+                        <Dialog.Footer className='flex gap-2'>
                             <Dialog.Close>
                                 <Pressable
-                                    className={`px-4 py-2.5 rounded-lg bg-accent-primary`}
+                                    className={`px-4 py-2.5 rounded-lg bg-background-icon`}
                                 >
                                     <Text className={`font-semibold text-text-primary`}>
                                         Close
@@ -116,7 +136,7 @@ const Components = () => {
                                 }}
                             >
                                 <Text className={`font-semibold text-text-icon`}>
-                                    Close
+                                    Confirm
                                 </Text>
                             </Pressable>
                         </Dialog.Footer>
@@ -130,11 +150,135 @@ const Components = () => {
             <Button
                 className="w-96 mt-6 bg-accent-primary px-6 py-4 rounded-2xl"
                 onPress={() => router.push('/')}
-                asChild
             >
                 <Text className="text-white font-medium">Login</Text>
             </Button>
-        </View>
+
+            <View className='flex-row gap-2 mt-6'>
+                <Button
+                    className="border border-accent-primary bg-background-primary px-6 py-4 rounded-2xl gap-2"
+                    onPress={() => router.push('/')}
+                >
+                    <Text className="text-accent-primary font-medium">Cancel Ticket</Text>
+                    <RefreshCcw size={20} color={colorTheme['accentPrimary']} />
+                </Button>
+                <Button
+                    className="bg-accent-primary px-6 py-4 rounded-2xl gap-2"
+                    onPress={() => router.push('/')}
+                >
+                    <Text className="text-white font-medium">Create Ticket</Text>
+                    <CirclePlus size={20} color={colorTheme['backgroundPrimary']} />
+                </Button>
+            </View>
+
+            <View className="w-full max-w-sm bg-background-primary p-6 rounded-2xl">
+
+                <Text className="text-lg font-bold text-text-primary mb-6">Settings</Text>
+
+                {/* --- Example 1: Controlled Component --- */}
+                <View className="flex-row items-center justify-between mb-4">
+                    <Text className="text-base text-text-primary">Enable Notifications</Text>
+                    <Switch.Root
+                        checked={isNotificationsEnabled}
+                        onCheckedChange={setIsNotificationsEnabled}
+                    >
+                        <Switch.Thumb />
+                    </Switch.Root>
+                </View>
+
+                {/* --- Example 2: Uncontrolled Component (uses its own state) --- */}
+                <View className="flex-row items-center justify-between mb-4">
+                    <Text className="text-base text-text-primary">Auto-Update</Text>
+                    <Switch.Root defaultChecked={true}>
+                        <Switch.Thumb />
+                    </Switch.Root>
+                </View>
+
+                {/* --- Example 3: Disabled State --- */}
+                <View className="flex-row items-center justify-between">
+                    <Text className="text-base text-text-secondary">Admin Access (Disabled)</Text>
+                    <Switch.Root disabled={true} checked={false}>
+                        <Switch.Thumb />
+                    </Switch.Root>
+                </View>
+
+                <Toggle
+                    options={[
+                        { label: "Yes", value: "yes" },
+                        { label: "No", value: "no" },
+                    ]}
+                    value={selection}
+                    onValueChange={(value) => setSelection(String(value))}
+                />
+
+                <Label htmlFor="email" className="mb-2">Email</Label>
+                <TextField.Root
+                    type="email"
+                    placeholder="email@example.com"
+                    value={email}
+                    onChangeText={setEmail}
+                >
+                    <TextField.LeftIcon>
+                        <AtSign size={18} className="text-text-secondary" />
+                    </TextField.LeftIcon>
+                </TextField.Root>
+
+                <Label htmlFor="password" className="mb-2">Password</Label>
+                <TextField.Root
+                    type="password"
+                    placeholder="Your password"
+                    value={password}
+                    onChangeText={setPassword}
+                >
+                    <TextField.LeftIcon>
+                        <KeyRound size={18} className="text-text-secondary" />
+                    </TextField.LeftIcon>
+                    <TextField.RightIcon>
+                        <Text className="text-accent-primary font-semibold">Forgot?</Text>
+                    </TextField.RightIcon>
+                </TextField.Root>
+
+                <TextField.Root placeholder="Search the docs…">
+                    <TextField.RightIcon>
+                        <Search size={18} className="text-text-secondary" />
+                    </TextField.RightIcon>
+                </TextField.Root>
+
+                <TextField.Root placeholder="Cannot edit" disabled />
+
+                <Label htmlFor="comment" className="mb-2">Comment</Label>
+                <TextField.Root
+                    placeholder="Leave a comment..."
+                    multiline
+                    textAlignVertical="top" // Important for multiline
+                    value={comment}
+                    onChangeText={setComment}
+                />
+
+                <Label htmlFor="password" className="mb-2">Password</Label>
+                <TextField.Root
+                    type="password"
+                    // The `secureTextEntry` prop is now controlled by our state
+                    secureTextEntry={!isPasswordVisible}
+                    placeholder="Your password"
+                    value={password}
+                    onChangeText={setPassword}
+                >
+                    {/* The RightIcon slot now contains our interactive toggle button */}
+                    <TextField.RightIcon>
+                        <Pressable onPress={togglePasswordVisibility} hitSlop={10}>
+                            {isPasswordVisible ? (
+                                // Show the 'EyeOff' icon when password is visible
+                                <EyeOff size={18} className="text-text-secondary" />
+                            ) : (
+                                // Show the 'Eye' icon when password is not visible
+                                <Eye size={18} className="text-text-secondary" />
+                            )}
+                        </Pressable>
+                    </TextField.RightIcon>
+                </TextField.Root>
+            </View>
+        </ScrollView >
     )
 }
 

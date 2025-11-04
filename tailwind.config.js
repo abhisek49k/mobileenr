@@ -2,7 +2,7 @@
 module.exports = {
   // NOTE: Update this to include the paths to all files that contain Nativewind classes.
   content: [
-    "./app/**/*.{js,jsx,ts,tsx}", 
+    "./app/**/*.{js,jsx,ts,tsx}",
     "./components/**/*.{js,jsx,ts,tsx}",
     "./constants/**/*.{js,jsx,ts,tsx}",
   ],
@@ -19,6 +19,8 @@ module.exports = {
         "text-primary": "rgb(var(--text-primary) / <alpha-value>)",
         "text-secondary": "rgb(var(--text-secondary) / <alpha-value>)",
         "text-icon": "rgb(var(--text-icon) / <alpha-value>)",
+        "text-subheading": "rgb(var(--text-subheading) / <alpha-value>)",
+
         "icon-primary": "rgb(var(--icon-primary) / <alpha-value>)",
 
         // Borders
@@ -32,6 +34,11 @@ module.exports = {
         // State Colors
         "error-primary": "rgb(var(--error-primary) / <alpha-value>)",
         "success-primary": "rgb(var(--success-primary) / <alpha-value>)",
+      },
+      fontFamily: {
+        "open-sans": ['OpenSans_400Regular'],
+        "open-sans-semibold": ['OpenSans_600SemiBold'],
+        "open-sans-bold": ['OpenSans_700Bold'],
       },
     },
   },

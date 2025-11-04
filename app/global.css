@@ -12,6 +12,7 @@
   --text-primary: 0 0 0; /* #000000 */
   --text-secondary: 30 106 180; /* #1E6AB4 */
   --text-icon: 255 255 255; /* #FFFFFF */
+  --text-subheading: 107, 114, 128; /* #6B7280 */
 
   --icon-primary: 146, 148, 152; /* #929498 */
 
@@ -33,6 +34,7 @@
   --text-primary: 249 250 251; /* #F9FAFB */
   --text-secondary: 156 163 175; /* #9CA3AF */
   --text-icon: 0 0 0; /* #000000 */
+  --text-subheading: 161, 161, 170; /* #A1A1AA */
 
   --border-primary: 39 39 42; /* #27272A */
   --border-secondary: 63 63 70; /* #3F3F46 */

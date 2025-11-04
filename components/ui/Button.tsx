@@ -1,25 +1,21 @@
 // components/Button.tsx
 import React from "react";
 import {
-  View,
   Text as RNText,
   Pressable,
   GestureResponderEvent,
-  ViewStyle,
+  ActivityIndicator,
 } from "react-native";
 import Animated, {
   useSharedValue,
   useAnimatedStyle,
   withSpring,
-  runOnJS,
 } from "react-native-reanimated";
-import { cn } from "@/lib/utils"; // simple className joiner (string helper)
+import { cn } from "@/lib/utils"; // Your className joining utility
 
 type ButtonProps = {
-  asChild?: boolean; // wrap child, but still handle press
   children: React.ReactNode;
   className?: string;
-  style?: ViewStyle | ViewStyle[];
   disabled?: boolean;
   loading?: boolean;
   onPress?: (e?: GestureResponderEvent) => void;
@@ -27,20 +23,18 @@ type ButtonProps = {
   unpressedScale?: number;
 };
 
-const AnimatedView = Animated.createAnimatedComponent(View);
+// Combine Pressable and Animated into a single, more efficient component
+const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
 
 export const Button: React.FC<ButtonProps> = ({
-  asChild = false,
   children,
   className,
-  style,
   disabled = false,
   loading = false,
   onPress,
   pressedScale = 0.96,
   unpressedScale = 1,
 }) => {
-  // Shared value for scale
   const scale = useSharedValue(unpressedScale);
 
   const animatedStyle = useAnimatedStyle(() => {
@@ -50,7 +44,6 @@ export const Button: React.FC<ButtonProps> = ({
   }, []);
 
   const handlePressIn = () => {
-    // animate to pressed scale
     scale.value = withSpring(pressedScale, {
       damping: 14,
       stiffness: 180,
@@ -58,7 +51,6 @@ export const Button: React.FC<ButtonProps> = ({
   };
 
   const handlePressOut = () => {
-    // animate back
     scale.value = withSpring(unpressedScale, {
       damping: 14,
       stiffness: 180,
@@ -67,38 +59,35 @@ export const Button: React.FC<ButtonProps> = ({
 
   const handlePress = (e?: GestureResponderEvent) => {
     if (disabled || loading) return;
-    if (onPress) onPress(e as any);
+    if (onPress) onPress(e);
   };
 
-  const baseClasses = cn(
+  // The className prop now applies to the root element,
+  // allowing layout classes like w-full, m-4, etc., to work correctly.
+  const finalClassName = cn(
     "flex-row items-center justify-center rounded-2xl px-4 py-3",
     "bg-accent-primary",
-    disabled && "opacity-50",
-    className
+    (disabled || loading) && "opacity-50",
+    className // User-provided classes are applied last to allow overrides
   );
 
-  // We wrap the pressable behavior around an AnimatedView that uses nativewind's className
-  // Pressable -> AnimatedView -> children
-  // asChild simply means we render children directly inside, but still handle Pressable events
-
   return (
-    <Pressable
+    <AnimatedPressable
+      style={animatedStyle}
+      className={finalClassName}
       onPressIn={handlePressIn}
       onPressOut={handlePressOut}
       onPress={handlePress}
       disabled={disabled || loading}
-      style={style as any}
     >
-      <AnimatedView style={[animatedStyle]} className={baseClasses}>
-        {loading ? (
-          // simple loading indicator using text or you can replace with ActivityIndicator
-          <RNText className="text-white">Loading...</RNText>
-        ) : (
-          // Render children unchanged — works with Text, Icon + Text, Link (asChild)
-          children
-        )}
-      </AnimatedView>
-    </Pressable>
+      {loading ? (
+        // Use an ActivityIndicator for a more standard loading state
+        <ActivityIndicator color="white" />
+      ) : (
+        // Render children as before
+        children
+      )}
+    </AnimatedPressable>
   );
 };
 

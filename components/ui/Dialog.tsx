@@ -11,6 +11,7 @@ import Animated, {
     Extrapolation,
 } from "react-native-reanimated";
 import { X } from "lucide-react-native";
+import { useThemeColors } from "@/hooks/useThemeColors";
 
 // --- 1. CONTEXT SETUP (Updated) ---
 interface DialogContextType {
@@ -47,7 +48,7 @@ const Root: React.FC<DialogRootProps> = ({ children, open, onOpenChange, enableA
   );
 };
 
-const Trigger: React.FC<{ children: React.ReactElement }> = ({ children }) => {
+const Trigger: React.FC<{ children: React.ReactElement<{ onPress?: () => void }> }> = ({ children }) => {
   const { onOpenChange } = useDialogContext();
   return React.cloneElement(children, {
     onPress: () => onOpenChange(true),
@@ -82,7 +83,7 @@ const DialogUI: React.FC<{ children: React.ReactNode }> = ({ children }) => {
             // ✅ Experimental native blur for Android when enabled
             <BlurView
               experimentalBlurMethod="dimezisBlurView"
-              intensity={50} // Android often needs higher intensity
+              intensity={4} // Android often needs higher intensity
               style={StyleSheet.absoluteFill}
             />
           ) : (
@@ -118,7 +119,7 @@ interface DialogContentProps {
   showCloseButton?: boolean;
 }
 const Content: React.FC<DialogContentProps> = ({ children, className, showCloseButton = true }) => (
-  <View className={`w-[90%] max-w-md bg-background-primary rounded-xl shadow-xl overflow-hidden ${className}`}>
+  <View className={`w-[90%] max-w-md bg-background-primary rounded-xl shadow-xl overflow-hidden border border-border-primary ${className}`}>
     {children}
     {showCloseButton && <Close />}
   </View>
@@ -140,11 +141,12 @@ const Description: React.FC<{ children: React.ReactNode; className?: string }> =
   <Text className={`text-base text-text-secondary mt-2 ${className}`}>{children}</Text>
 );
 
-const Close: React.FC<{ children?: React.ReactElement }> = ({ children }) => {
+const Close: React.FC<{ children?: React.ReactElement<{ onPress?: () => void }> }> = ({ children }) => {
+    const colorTheme = useThemeColors();
     const { onOpenChange } = useDialogContext();
     const defaultButton = (
         <Pressable onPress={() => onOpenChange(false)} className="absolute top-4 right-4 p-2 rounded-full" hitSlop={20}>
-            <X size={20} className="text-text-secondary opacity-70" />
+            <X size={20} color={colorTheme['accentPrimary']} />
         </Pressable>
     );
     return children ? React.cloneElement(children, { onPress: () => onOpenChange(false) }) : defaultButton;
