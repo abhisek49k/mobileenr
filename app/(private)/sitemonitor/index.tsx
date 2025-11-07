@@ -1,12 +1,12 @@
 import { View, Text } from 'react-native'
 import React from 'react'
 
-const SiteMonitor = () => {
+const index = () => {
   return (
     <View>
-      <Text>siteMonitor</Text>
+      <Text>Site Monitor</Text>
     </View>
   )
 }
 
-export default SiteMonitor
+export default index

@@ -1,12 +1,12 @@
 import { View, Text } from 'react-native'
 import React from 'react'
 
-const index = () => {
+const Createticket = () => {
   return (
     <View>
-      <Text>index</Text>
+      <Text>create-tickt</Text>
     </View>
   )
 }
 
-export default index
+export default Createticket

@@ -122,7 +122,7 @@ const Root = forwardRef<RNTextInput, TextFieldRootProps>(
             style={animatedContainerStyle}
             className={cn(
               "relative h-14 w-full justify-center rounded-xl border",
-              disabled ? "bg-background-secondary opacity-70" : "bg-background-primary shadow-sm",
+              disabled ? "bg-[#E6E6E6]" : "bg-background-primary shadow-sm",
               props.multiline && "h-auto min-h-[56px]",
               className
             )}
@@ -140,10 +140,11 @@ const Root = forwardRef<RNTextInput, TextFieldRootProps>(
               keyboardType={keyboardType}
               {...props}
               className={cn(
-                "w-80 h-full px-4 text-base text-text-primary",
+                "h-full px-4 text-base text-text-primary",
                 hasLeftIcon && "pl-11",
                 hasRightIcon && "pr-11",
-                props.multiline && "py-3 h-24"
+                props.multiline && "py-3 h-24",
+                hasLeftIcon || hasRightIcon ? "w-80" : "w-full",
               )}
             />
           </Animated.View>

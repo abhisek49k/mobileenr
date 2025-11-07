@@ -30,8 +30,6 @@ export default function LoginScreen() {
     const usernameInputRef = useRef<RNTextInput>(null);
     const passwordInputRef = useRef<RNTextInput>(null);
 
-    console.log(isPasswordVisible,'isPasswordVisible');
-
     const togglePasswordVisibility = () => {
         setIsPasswordVisible(prevState => !prevState);
     };
@@ -53,6 +51,7 @@ export default function LoginScreen() {
                 <ScrollView
                     // className="bg-accent-secondary"
                     contentContainerStyle={{ flexGrow: 1, justifyContent: 'center', margin: 0, padding: 0 }}
+                    className="p-0 m-0"
                     keyboardShouldPersistTaps="handled"
                 >
                     <View className="p-8 flex-1">
@@ -116,7 +115,7 @@ export default function LoginScreen() {
                         {/* --- Login Button --- */}
                         <Button
                             className="w-full py-4 rounded-[14px] mt-2" // Adjusted padding and rounding
-                            onPress={() => console.log("Login Pressed")}
+                            onPress={() => {}}
                         >
                             <Text className="text-lg font-semibold text-white">Login</Text>
                         </Button>
@@ -128,11 +127,11 @@ export default function LoginScreen() {
                             </Text>
                         </Pressable>
                     </View>
-
                 </ScrollView>
             </KeyboardAvoidingView>
+
             {/* --- Footer Text --- */}
-            <View className="pb-8 w-full">
+            <View className="absolute bottom-10 w-full">
                 <Text className="text-sm text-text-primary text-center font-open-sans">
                     Developed by <Text className="text-accent-primary font-open-sans">GISKernel</Text>
                 </Text>

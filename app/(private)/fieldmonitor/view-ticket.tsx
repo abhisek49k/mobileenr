@@ -1,12 +1,12 @@
 import { View, Text } from 'react-native'
 import React from 'react'
 
-const FieldMonitor = () => {
+const Viewticket = () => {
   return (
     <View>
-      <Text>field-monitor</Text>
+      <Text>view-ticket</Text>
     </View>
   )
 }
 
-export default FieldMonitor
+export default Viewticket

@@ -8,9 +8,13 @@
   --background-primary: 255 255 255; /* #FFFFFF */
   --background-secondary: 249 250 251; /* #F9FAFB */
   --background-icon: 227, 226, 231; /* #E3E2E7 */
+  --background-indicator: 26, 43, 67; /* #1A2B43 */
+  --background-subheading: #1E6AB4;
+  --background-light: 
 
   --text-primary: 0 0 0; /* #000000 */
   --text-secondary: 30 106 180; /* #1E6AB4 */
+  --text-light: 58 58 58; /* #3A3A3A */
   --text-icon: 255 255 255; /* #FFFFFF */
   --text-subheading: 107, 114, 128; /* #6B7280 */
 
@@ -30,6 +34,7 @@
 .dark {
   --background-primary: 0 0 0; /* #000000 */
   --background-secondary: 17 17 17; /* #111111 */
+  --background-indicator: 26, 43, 67; /* #1A2B43 */
 
   --text-primary: 249 250 251; /* #F9FAFB */
   --text-secondary: 156 163 175; /* #9CA3AF */

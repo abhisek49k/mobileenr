@@ -4,6 +4,7 @@ export const lightColors = {
   backgroundPrimary: "#FFFFFF",
   backgroundSecondary: "#F9FAFB",
   backgroundIcon: '#E3E2E7',
+  backgroundIndicator: '#1A2B43',
 
   // Text
   textPrimary: "#000000",
@@ -28,6 +29,7 @@ export const lightColors = {
 export const darkColors = {
   backgroundPrimary: "#000000",
   backgroundSecondary: "#111111",
+  backgroundIndicator: '#1A2B43',
 
   textPrimary: "#F9FAFB",
   textSecondary: "#9CA3AF",

@@ -14,6 +14,7 @@ module.exports = {
         "background-primary": "rgb(var(--background-primary) / <alpha-value>)",
         "background-secondary": "rgb(var(--background-secondary) / <alpha-value>)",
         "background-icon": "rgb(var(--background-icon) / <alpha-value>)",
+        "background-indicator": "rgb(var(--background-indicator) / <alpha-value>)",
 
         // Text
         "text-primary": "rgb(var(--text-primary) / <alpha-value>)",

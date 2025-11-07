@@ -6,7 +6,6 @@ import {
     DropdownMenuContent,
     DropdownMenuItem,
     DropdownMenuLabel,
-    DropdownMenuRadioItem,
     DropdownMenuTrigger
 } from "@/components/ui/Dropdown";
 import { Entypo } from '@expo/vector-icons';
@@ -34,6 +33,7 @@ const Components = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [comment, setComment] = useState('');
+    const [framework, setFramework] = useState("");
 
     // The parent's only job is to update its state when the child says so.
     const handleImagesChanged = (updatedImages: ImageAsset[]) => {
@@ -54,7 +54,7 @@ const Components = () => {
                 headerLeft={<Text className="text-lg font-semibold text-white">Components</Text>}
             />
             <View className="flex flex-row gap-2 p-2">
-                <DropdownMenu>
+                <DropdownMenu value={framework} onValueChange={setFramework}>
                     <DropdownMenuTrigger placeholder="Select Frameworks" className="w-80" />
                     <DropdownMenuContent className="w-80">
                         <DropdownMenuLabel>Technologies</DropdownMenuLabel>
@@ -78,16 +78,6 @@ const Components = () => {
                     </DropdownMenuContent>
                 </DropdownMenu>
             </View>
-
-            <DropdownMenu>
-                <DropdownMenuTrigger placeholder="Choose Theme" />
-                <DropdownMenuContent>
-                    <DropdownMenuLabel>Appearance</DropdownMenuLabel>
-                    <DropdownMenuRadioItem label="Light" value="light" />
-                    <DropdownMenuRadioItem label="Dark" value="dark" />
-                    <DropdownMenuRadioItem label="System" value="system" />
-                </DropdownMenuContent>
-            </DropdownMenu>
 
             <ImageUploader
                 images={images}

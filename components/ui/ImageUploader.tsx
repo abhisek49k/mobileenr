@@ -148,10 +148,10 @@ const ImageUploader: React.FC<ImageUploaderProps> = ({
 
     return (
         <>
-            <View className="p-4 w-full">
+            <View className="w-full">
                 <View className="flex-row items-center mb-4">
-                    <View className="flex-1 h-14 justify-center px-4 bg-background-secondary rounded-xl border border-[#CCCCCC]">
-                        <Text className="text-text-secondary text-base font-medium">
+                    <View className="flex-1 h-14 justify-center px-4 bg-[#E6E6E6] rounded-xl border border-[#CCCCCC]">
+                        <Text className="text-[#3A3A3A] text-base font-medium">
                             {images.length > 0
                                 ? `${images.length} image${images.length > 1 ? "s" : ""} selected`
                                 : "Select images"}
