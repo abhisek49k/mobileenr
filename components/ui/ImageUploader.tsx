@@ -10,7 +10,7 @@ import Animated, {
     FadeOut,
     LinearTransition,
 } from "react-native-reanimated";
-import { Upload, X } from "lucide-react-native";
+import { Camera, X } from "lucide-react-native"; // Changed Upload to Camera
 import * as ImagePicker from 'expo-image-picker';
 import { useThemeColors } from "@/hooks/useThemeColors";
 import { Dialog } from "./Dialog";
@@ -92,7 +92,9 @@ const ImageUploader: React.FC<ImageUploaderProps> = ({
     const { width } = useWindowDimensions();
     const colorTheme = useThemeColors();
     const isUploadPressed = useSharedValue(false);
-    const [permission, requestPermission] = ImagePicker.useMediaLibraryPermissions();
+    
+    // CHANGED: Request Camera Permissions instead of Media Library
+    const [permission, requestPermission] = ImagePicker.useCameraPermissions();
 
     // --- Internal state for the Dialog ---
     const [isPreviewOpen, setIsPreviewOpen] = useState(false);
@@ -104,25 +106,29 @@ const ImageUploader: React.FC<ImageUploaderProps> = ({
         setIsPreviewOpen(true);
     };
 
-    const handleAddImage = async () => {
+    const handleCaptureImage = async () => {
+        // CHANGED: Check for Camera Permission
         if (permission?.status !== ImagePicker.PermissionStatus.GRANTED) {
             const { status } = await requestPermission();
             if (status !== ImagePicker.PermissionStatus.GRANTED) {
-                Alert.alert('Permission Required', 'Please grant permission to access your photo library.');
+                Alert.alert('Permission Required', 'Please grant permission to access your camera.');
                 return;
             }
         }
 
-        const result = await ImagePicker.launchImageLibraryAsync({
+        // CHANGED: Use launchCameraAsync
+        const result = await ImagePicker.launchCameraAsync({
             mediaTypes: ["images"],
-            allowsMultipleSelection: true,
+            // NOTE: Camera does not support "allowsMultipleSelection". 
+            // User must take one photo at a time.
+            allowsEditing: true, // Added: allows user to crop to the aspect ratio below
             aspect: [1, 1],
             quality: 1,
         });
 
         if (!result.canceled && result.assets) {
             const newImages: ImageAsset[] = result.assets.map((asset) => ({
-                id: asset.assetId || asset.uri,
+                id: asset.assetId || asset.uri, // assetId might be null for camera, uri is fallback
                 uri: asset.uri,
             }));
             onImagesChanged([...images, ...newImages]);
@@ -142,7 +148,7 @@ const ImageUploader: React.FC<ImageUploaderProps> = ({
         <ImagePreviewItem
             asset={item}
             onRemove={handleRemoveImage}
-            onPress={handleImagePreview} // Use the internal handler
+            onPress={handleImagePreview} 
         />
     );
 
@@ -153,19 +159,20 @@ const ImageUploader: React.FC<ImageUploaderProps> = ({
                     <View className="flex-1 h-14 justify-center px-4 bg-[#E6E6E6] rounded-xl border border-[#CCCCCC]">
                         <Text className="text-[#3A3A3A] text-base font-medium">
                             {images.length > 0
-                                ? `${images.length} image${images.length > 1 ? "s" : ""} selected`
-                                : "Select images"}
+                                ? `${images.length} image${images.length > 1 ? "s" : ""} captured`
+                                : "Capture images"} 
                         </Text>
                     </View>
 
                     <AnimatedPressable
-                        onPress={handleAddImage}
+                        onPress={handleCaptureImage}
                         onPressIn={() => (isUploadPressed.value = true)}
                         onPressOut={() => (isUploadPressed.value = false)}
                         style={animatedUploadButtonStyle}
                         className="w-14 h-14 ml-3 bg-accent-primary rounded-xl items-center justify-center"
                     >
-                        <Upload size={24} color={colorTheme['textIcon']} />
+                        {/* CHANGED: Swapped Upload icon for Camera icon */}
+                        <Camera size={24} color={colorTheme['textIcon']} />
                     </AnimatedPressable>
                 </View>
 
@@ -178,7 +185,7 @@ const ImageUploader: React.FC<ImageUploaderProps> = ({
                     contentContainerStyle={{ paddingVertical: 8 }}
                 />
             </View>
-            {/* --- Dialog is now part of the component's render tree --- */}
+            
             <Dialog.Root open={isPreviewOpen} onOpenChange={setIsPreviewOpen} enableAndroidBlur={true}>
                 <Dialog.Portal>
                     <Dialog.Content showCloseButton={true} className="p-0 shadow-none" >

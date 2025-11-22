@@ -53,7 +53,7 @@ export const Toggle: React.FC<ToggleProps> = ({
 
   return (
     <View
-      className={`relative flex-row border border-border-secondary rounded-2xl bg-background-primary p-[4px] ${
+      className={`relative flex-row border border-border-secondary rounded-[14px] bg-background-primary p-[4px] ${
         disabled ? "opacity-50" : ""
       }`}
     >
@@ -69,7 +69,7 @@ export const Toggle: React.FC<ToggleProps> = ({
         return (
           <Pressable
             key={opt.value}
-            className="flex-1 h-10 items-center justify-center"
+            className="flex-1 h-12 items-center justify-center"
             onPress={() => handleChange(opt.value)}
           >
             <Text

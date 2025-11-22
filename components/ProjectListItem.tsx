@@ -5,10 +5,17 @@ import { ChevronRight } from 'lucide-react-native';
 import { cn } from '@/lib/utils'; // Assuming you have this utility
 
 // Define the shape of our project data for type safety
+export interface ContractorOption {
+  label: string;
+  value: string;
+}
+
 export interface Project {
   id: string;
   name: string;
   location: string;
+  primeContractors: ContractorOption[];
+  subContractors: ContractorOption[];
 }
 
 interface ProjectListItemProps {

@@ -1,25 +1,45 @@
-import { create } from 'zustand';
+import { create } from "zustand";
+import type { Project } from "@/components/ProjectListItem";
 
-// Define the state structure
-interface ProjectState {
-  projectId: string | null;
-  projectName: string | null;
+export interface ContractorOption {
+  label: string;
+  value: string;
 }
 
-// Define the actions to update the state
+interface ProjectState {
+  selectedProject: Project | null;
+  selectedPrime: ContractorOption | null;
+  selectedSub: ContractorOption | null;
+}
+
 interface ProjectActions {
-  setProject: (id: string, name: string) => void;
+  setProject: (project: Project) => void;
+
+  setPrimeContractor: (contractor: ContractorOption | null) => void;
+  setSubContractor: (contractor: ContractorOption | null) => void;
+
   clearProject: () => void;
 }
 
 const initialState: ProjectState = {
-  projectId: null,
-  projectName: null,
+  selectedProject: null,
+  selectedPrime: null,
+  selectedSub: null,
 };
 
-// Create the store
 export const useProjectStore = create<ProjectState & ProjectActions>((set) => ({
   ...initialState,
-  setProject: (id, name) => set({ projectId: id, projectName: name }),
+
+  setProject: (project) =>
+    set({
+      selectedProject: project,
+      selectedPrime: null, // reset when changing project
+      selectedSub: null,   // reset when changing project
+    }),
+
+  setPrimeContractor: (contractor) => set({ selectedPrime: contractor }),
+
+  setSubContractor: (contractor) => set({ selectedSub: contractor }),
+
   clearProject: () => set(initialState),
 }));

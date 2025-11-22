@@ -9,8 +9,8 @@
   --background-secondary: 249 250 251; /* #F9FAFB */
   --background-icon: 227, 226, 231; /* #E3E2E7 */
   --background-indicator: 26, 43, 67; /* #1A2B43 */
-  --background-subheading: #1E6AB4;
-  --background-light: 
+  --background-light: 230, 230, 230; /* #E6E6E6 */
+  --background-blue-light: 219, 230, 240; /* #DBE6F0 */
 
   --text-primary: 0 0 0; /* #000000 */
   --text-secondary: 30 106 180; /* #1E6AB4 */
@@ -22,6 +22,7 @@
 
   --border-primary: 229 231 235; /* #E5E7EB */
   --border-secondary: 209 213 219; /* #D1D5DB */
+  --border-blue: 30 106 180; /* #1E6AB4 */
 
   --accent-primary: 30 106 180; /* #1E6AB4 */
   --accent-secondary: 52 199 89; /* #34C759 */

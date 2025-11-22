@@ -5,17 +5,22 @@ export const lightColors = {
   backgroundSecondary: "#F9FAFB",
   backgroundIcon: '#E3E2E7',
   backgroundIndicator: '#1A2B43',
+  backgroundLight: '#E6E6E6',
+  backgroundBlueLight: '#DBE6F0',
 
   // Text
   textPrimary: "#000000",
   textSecondary: "#1E6AB4",
+  textLight: "#3A3A3A",
   textIcon: '#FFFFFF',
+  textSubheading: "#6B7280",
 
   iconPrimary: "#929498",
 
   // Borders
   borderPrimary: "#E5E7EB",
   borderSecondary: "#D1D5DB",
+  borderBlue: "#1e6ab4",
 
   // Brand & Accent
   accentPrimary: "#1E6AB4",
