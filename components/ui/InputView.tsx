@@ -133,7 +133,7 @@ export const InputView: React.FC<InputViewProps> = ({
             <View className="p-6 pt-4">
               <Image
                 source={{ uri: dialogImage }}
-                className="w-full h-32 rounded-lg mb-4"
+                className="w-full h-60 rounded-lg mb-4"
                 resizeMode="contain"
               />
               <TextField.Root
