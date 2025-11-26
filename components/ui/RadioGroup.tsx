@@ -175,15 +175,9 @@ const Root: React.FC<RadioGroupRootProps> = ({
             <Dialog.Root open={isImagePreviewOpen} onOpenChange={setIsImagePreviewOpen} enableAndroidBlur={true}>
                 <Dialog.Portal>
                     {/* We use showCloseButton={false} because we will place our own 'X' in the header */}
-                    <Dialog.Content showCloseButton={false} className="p-0">
-                        <Dialog.Header className="flex-row items-center justify-between">
+                    <Dialog.Content className="p-0">
+                        <Dialog.Header className="flex-row items-center justify-between pl-6">
                             <Dialog.Title>{selectedImageInfo?.title}</Dialog.Title>
-                            {/* Use the flexible version of Dialog.Close to get the 'onPress' functionality */}
-                            <Dialog.Close>
-                                <Pressable className="p-1" hitSlop={10}>
-                                    <X size={20} className="text-text-secondary" />
-                                </Pressable>
-                            </Dialog.Close>
                         </Dialog.Header>
 
                         {/* Container for the image with padding */}
@@ -191,7 +185,7 @@ const Root: React.FC<RadioGroupRootProps> = ({
                             {selectedImageInfo && (
                                 <Image
                                     source={selectedImageInfo.source}
-                                    className="w-full h-40 rounded-lg" // Adjust height as needed
+                                    className="w-full h-80 rounded-lg" // Adjust height as needed
                                     resizeMode="contain"
                                 />
                             )}

@@ -62,4 +62,70 @@ export const USA_STATES = [
   { label: "Wyoming", value: "wyoming" },
 ];
 
+interface Option {
+  label: string;
+  value: string;
+}
+
+interface Project {
+  id: string;
+  name: string;
+  location: string;
+  primeContractors: Option[];
+  subContractors: Option[];
+}
+
+// --- Mock Data ---
+// In a real app, this would come from an API call.
+export const MOCK_PROJECTS: Project[] = [
+  {
+    id: "proj_123",
+    name: "Hurricane Ian COJ Debris Monitoring Services",
+    location: "FLORIDA Jacksonville",
+    primeContractors: [
+      { label: "AshBritt Environmental", value: "ashbritt_env" },
+      { label: "CrowderGulf", value: "crowdergulf" },
+      { label: "Ceres Environmental Services", value: "ceres_env" },
+    ],
+    subContractors: [
+      { label: "DRC Emergency Services", value: "drc_emergency" },
+      { label: "Phillips & Jordan", value: "phillips_jordan" },
+      { label: "Custom Tree Care", value: "custom_tree_care" },
+    ],
+  },
+  {
+    id: "proj_456",
+    name: "Coastal Storm Ida Restoration Project",
+    location: "NEW YORK Suffolk County",
+    primeContractors: [
+      { label: "Tetra Tech Inc.", value: "tetra_tech" },
+      { label: "Haugland Energy Group", value: "haugland_energy" },
+      { label: "ECC (Environmental Chemical Corp)", value: "ecc_env" },
+    ],
+    subContractors: [
+      { label: "Apex Companies LLC", value: "apex_companies" },
+      { label: "Arcadis US", value: "arcadis_us" },
+      { label: "WSP USA Environment", value: "wsp_usa" },
+    ],
+  },
+  {
+    id: "proj_789",
+    name: "Wildfire Cleanup and Recovery",
+    location: "CALIFORNIA Napa Valley",
+    primeContractors: [
+      { label: "Cal Fire Restoration Group", value: "cal_fire_restoration" },
+      { label: "Sukut Construction", value: "sukut_construction" },
+      {
+        label: "Pacific States Environmental Contractors",
+        value: "pacific_states_env",
+      },
+    ],
+    subContractors: [
+      { label: "SCS Engineers", value: "scs_engineers" },
+      { label: "Granite Construction", value: "granite_construction" },
+      { label: "Environmental Recovery Corp", value: "erc_recovery" },
+    ],
+  },
+];
+
 

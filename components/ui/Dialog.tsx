@@ -194,8 +194,8 @@ const Content: React.FC<DialogContentProps> = ({
   <View
     className={`bg-background-primary rounded-xl shadow-xl overflow-hidden border border-border-primary ${className}`}
   >
-    {children}
     {showCloseButton && <Close />}
+    {children}
   </View>
 );
 
@@ -204,8 +204,8 @@ const Header: React.FC<{ title?: string; children?: React.ReactNode; className?:
   children,
   className,
 }) => (
-  <View className={`p-6 border-b border-border-primary ${className}`}>
-    {title ? <Text className="text-xl font-bold text-text-primary">{title}</Text> : children}
+  <View className={`px-0 py-4 border-b border-border-primary ${className}`}>
+    {title ? <Text className="text-xl font-bold text-text-secondary">{title}</Text> : children}
   </View>
 );
 
@@ -222,7 +222,7 @@ const Title: React.FC<{ children: React.ReactNode; className?: string }> = ({
   children,
   className,
 }) => (
-  <Text className={`text-xl font-bold text-text-primary ${className}`}>
+  <Text className={`text-xl font-bold text-text-secondary ${className}`}>
     {children}
   </Text>
 );
@@ -231,7 +231,7 @@ const Description: React.FC<{ children: React.ReactNode; className?: string }> =
   children,
   className,
 }) => (
-  <Text className={`text-base text-text-secondary mt-2 ${className}`}>
+  <Text className={`text-base font-open-sans text-text-secondary mt-2 ${className}`}>
     {children}
   </Text>
 );
@@ -245,14 +245,20 @@ const Close: React.FC<{ children?: React.ReactElement<{ onPress?: () => void }> 
   const defaultButton = (
     <Pressable
       onPress={() => onOpenChange(false)}
-      style={{
-        position: "absolute",
-        top: 16,
-        right: 16,
-        padding: 8,
-        borderRadius: 20,
-      }}
       hitSlop={20}
+      // Added absolute positioning styles to override the normal flow:
+      style={{
+        position: 'absolute',
+        top: 8, // Adjust as needed to pull button closer to the edge
+        right: 8, // Adjust as needed to pull button closer to the edge
+        zIndex: 10,
+      }}
+      className="bg-background-blue-light w-10 h-10 rounded-full overflow-hidden flex-row items-center justify-center"
+      android_ripple={{
+        color: 'rgba(30,106,180,0.25)',
+        borderless: false,
+        foreground: true,
+      }}
     >
       <X size={20} color={colorTheme["accentPrimary"]} />
     </Pressable>

@@ -2,14 +2,10 @@ import {
   View,
   Text,
   ScrollView,
-  Pressable,
   StyleSheet,
-  KeyboardAvoidingView,
-  Platform,
-  ActivityIndicator,
   Image,
 } from "react-native";
-import React, { useCallback, useState, useMemo } from "react";
+import React, { useCallback } from "react";
 // Assuming the path to your hooks and components are correct
 import { useThemeColors } from "@/hooks/useThemeColors";
 import { Label } from "@/components/ui/Label";
@@ -23,8 +19,6 @@ import {
 import { DatePicker } from "@/components/ui/DatePicker";
 import { Toggle } from "@/components/ui/Toggle";
 import ImageUploader, { ImageAsset } from "@/components/ui/ImageUploader";
-import { Eye, EyeOff, AtSign } from "lucide-react-native";
-import { Separator } from "@/components/ui/Separator";
 import { RadioGroup } from "@/components/ui/RadioGroup";
 import { InputView } from "../ui/InputView";
 import { CalculatedView } from "../ui/CalculatedView";
@@ -46,17 +40,26 @@ interface Field {
   required: boolean;
   editable: boolean;
   options?:
-    | {
-        type: "static" | "dynamic";
-        data: FieldOption[];
-      }
-    | FieldOption[];
-  dependencies?: { fieldId: string; condition: string; value: any }[];
+  | {
+    type: "static" | "dynamic";
+    data: FieldOption[];
+  }
+  | FieldOption[];
+  dependencies?: {
+    fieldId: string;
+    condition: string;
+    value: any;
+    actions?: {
+      action: 'show' | 'hide' | 'setValue';
+      value?: any;
+      valueFromField?: string;
+    }[];
+  }[];
   config?: { maxFiles: number; allowedTypes: string[] };
   calculation?: { formula: string; variables: string[]; unit: string };
   defaultValue?: any;
   multiline?: boolean;
-  ref_img?: { url: string }; // Added for image display
+  ref_img?: { url: string, localUri: string }; // Added for image display
   [key: string]: any;
 }
 
@@ -157,13 +160,14 @@ const ComponentMap: Record<
     <View className="mb-4" key={field.name}>
       <Label required={field.required}>{field.label}</Label>
       <TextField.Root
-        placeholder={field.placeholder}
         value={String(value || "")}
         onChangeText={onChange}
         className="mt-2"
         keyboardType="phone-pad"
         textAlignVertical={"auto"}
         disabled={!field.editable}
+        type="phone-number"
+        placeholder="(000) 000-0000"
       />
     </View>
   ),
@@ -177,7 +181,7 @@ const ComponentMap: Record<
         onSave={onChange}
         placeholder="Enter measurement in Inches"
         dialogTitle="Enter Measurement"
-        dialogImage={field.ref_img?.url}
+        dialogImage={field.ref_img?.localUri}
         dialogInputPlaceholder="Enter Measurement in Inches"
       />
     </View>
@@ -294,9 +298,9 @@ const ComponentMap: Record<
       options.length > 0
         ? options
         : [
-            { label: "Yes", value: true },
-            { label: "No", value: false },
-          ];
+          { label: "Yes", value: true },
+          { label: "No", value: false },
+        ];
 
     return (
       <View className="mb-4" key={field.name}>
@@ -324,10 +328,10 @@ const ComponentMap: Record<
         </Label>
         <RadioGroup.Root value={value} onValueChange={onChange}>
           {options.map((item) => {
-            const imageSource = item.icon?.url
-              ? { uri: item.icon.url } // Prioritize remote URL
-              : item.icon?.localUri
-                ? { uri: item.icon.localUri } // Fallback to local URI
+            const imageSource = item.icon?.localUri
+              ? { uri: item.icon.localUri } // Prioritize remote URL
+              : item.icon?.url
+                ? { uri: item.icon.url } // Fallback to local URI
                 : null;
 
             return (
@@ -351,32 +355,32 @@ const ComponentMap: Record<
 
   imagedisplay: (field, value, onChange, themeColors) => {
     // Assuming the URL for the image is provided via a custom field property, e.g., 'ref_img.url'
-    const imageUrl = field?.ref_img?.url
+    const imageUrl = field?.ref_img?.localUri
 
     if (!imageUrl) {
-        return (
-            <View className="mb-4" key={field.name}>
-                <Text className="text-text-secondary italic">No image source defined.</Text>
-            </View>
-        );
-    }
-    
-    return (
+      return (
         <View className="mb-4" key={field.name}>
-            <Label className='mb-2'>{field.label}</Label>
-            
-            {/* Outer View with rounded gray border */}
-            <View className="p-1 border border-border-secondary rounded-xl bg-background-tertiary">
-                <Image
-                    source={{ uri: imageUrl }}
-                    // Set a default size for the image container
-                    style={{ width: '100%', height: 200, borderRadius: 10 }}
-                    resizeMode="contain"
-                    // Optional: Placeholder while loading
-                    // defaultSource={require('path/to/placeholder.png')}
-                />
-            </View>
+          <Text className="text-text-secondary italic">No image source defined.</Text>
         </View>
+      );
+    }
+
+    return (
+      <View className="mb-4" key={field.name}>
+        <Label className='mb-2'>{field.label}</Label>
+
+        {/* Outer View with rounded gray border */}
+        <View className="p-1 border border-border-secondary rounded-xl bg-background-tertiary">
+          <Image
+            source={{ uri: imageUrl }}
+            // Set a default size for the image container
+            style={{ width: '100%', height: 200, borderRadius: 10 }}
+            resizeMode="contain"
+          // Optional: Placeholder while loading
+          // defaultSource={require('path/to/placeholder.png')}
+          />
+        </View>
+      </View>
     );
   },
 };
@@ -390,14 +394,12 @@ export function FormRenderer({ schema }: { schema: FormSchema | undefined }) {
   const updateField = useTruckFormStore((state) => state.setValue);
   const loadDefaults = useTruckFormStore((state) => state.loadDefaults);
 
-  console.log(formState,'--- formState ---');
-
   // Load defaults from schema into the store once when the schema is available
   React.useEffect(() => {
     if (schema) {
       loadDefaults(schema);
     }
-  }, [schema, loadDefaults]); 
+  }, [schema, loadDefaults]);
 
   if (!schema || !schema.sections || schema.sections.length === 0) {
     return (
@@ -477,20 +479,73 @@ export function FormRenderer({ schema }: { schema: FormSchema | undefined }) {
 
             // 1. Dependency/Visibility Check
             const isVisible = (() => {
-              if (!field.dependencies || field.dependencies.length === 0)
-                return true;
+              if (!field.dependencies || field.dependencies.length === 0) return true;
 
-              return field.dependencies.every((dep) => {
-                const depValue = formState[dep.fieldId]; // Use formState from the store
+              let visible = true; // default: fields are visible unless explicitly hidden
 
-                if (dep.condition === "equals") {
-                  return depValue === dep.value;
-                }
-                return true;
+              field.dependencies.forEach(dep => {
+                const depValue = formState[dep.fieldId];
+                const conditionMatched =
+                  dep.condition === "equals" ? depValue === dep.value : false;
+
+                if (!conditionMatched) return; // ignore unmatched conditions completely
+
+                dep.actions?.forEach(action => {
+                  if (action.action === "show") visible = true;
+                  if (action.action === "hide") visible = false;
+                });
               });
+
+              return visible;
             })();
 
+
             if (!isVisible) return null;
+
+            // === 2. APPLY DEPENDENCY ACTIONS (setValue) ===
+            if (field.dependencies && field.dependencies.length > 0) {
+              field.dependencies.forEach((dep) => {
+                const depValue = formState[dep.fieldId];
+                const conditionMatched =
+                  dep.condition === "equals" ? depValue === dep.value : false;
+
+                if (!conditionMatched || !dep.actions) return;
+
+                dep.actions.forEach((action) => {
+                  if (action.action === "setValue" && action.valueFromField) {
+                    const sourceValue = formState[action.valueFromField];
+                    const currentValue = formState[field.name];
+
+                    // Prevent infinite loops or redundant writes
+                    if (
+                      sourceValue !== undefined &&
+                      sourceValue !== currentValue
+                    ) {
+                      updateField(field.name, sourceValue);
+                    }
+                  }
+                });
+              });
+            }
+
+            // === 4. Determine Editable State Based on Dependencies ===
+            let isEditable = field.editable;
+
+            if (field.dependencies && field.dependencies.length > 0) {
+              field.dependencies.forEach(dep => {
+                const depValue = formState[dep.fieldId];
+                const conditionMatched =
+                  dep.condition === "equals" ? depValue === dep.value : false;
+
+                if (!conditionMatched || !dep.actions) return;
+
+                // If this dependency triggers a setValue action → lock field (editable = false)
+                const hasSetValue = dep.actions.some(a => a.action === "setValue");
+                if (hasSetValue) {
+                  isEditable = false;
+                }
+              });
+            }
 
             // 2. Determine Value
             // CalculatedView gets its value dynamically through its own logic 
@@ -503,7 +558,7 @@ export function FormRenderer({ schema }: { schema: FormSchema | undefined }) {
 
             // 3. Render Field
             return Renderer(
-              field,
+              { ...field, editable: isEditable },
               value,
               // Use updateField from the store, keying by field.name
               (newValue) => updateField(field.name, newValue),

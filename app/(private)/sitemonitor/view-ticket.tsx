@@ -9,7 +9,7 @@ import { useThemeColors } from '@/hooks/useThemeColors';
 
 let debrisType = "Vegetative"
 
-const ViewTicket = () => {
+const ViewDisposalTickets = () => {
 
   const insets = useSafeAreaInsets();
   const router = useRouter();
@@ -31,7 +31,7 @@ const ViewTicket = () => {
         }
         headerCenter={
           <Text className="text-[22px] font-semibold text-white">
-            Load Tickets
+            Disposal Tickets
           </Text>
         }
       />
@@ -62,4 +62,4 @@ const ViewTicket = () => {
   )
 }
 
-export default ViewTicket
+export default ViewDisposalTickets;

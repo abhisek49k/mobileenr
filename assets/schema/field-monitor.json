@@ -1,0 +1,762 @@
+{
+  "formId": "field-monitor-form-v1",
+  "title": "Field Monitor Form",
+  "version": 1.0,
+  "createdAt": "2025-11-10T10:00:00Z",
+  "updatedAt": "2025-11-10T20:00:00Z",
+  "types": {
+    "Vegetative": {
+      "label": "Vegetative",
+      "fields": [
+        {
+          "id": "lat_long",
+          "name": "lat_long",
+          "label": "Lat / Long",
+          "type": "text",
+          "required": true,
+          "editable": true
+        },
+        {
+          "id": "address",
+          "name": "address",
+          "label": "Address",
+          "type": "text",
+          "required": true,
+          "editable": true
+        },
+        {
+          "id": "truck_number",
+          "name": "truck_number",
+          "label": "Truck Number",
+          "type": "scan",
+          "required": true
+        },
+        {
+          "id": "site_directed_to",
+          "name": "site_directed_to",
+          "label": "Site Directed To",
+          "type": "dropdown",
+          "required": true
+        },
+        {
+          "id": "photos",
+          "name": "photos",
+          "label": "Photos",
+          "type": "imageUpload",
+          "required": true
+        },
+        {
+          "id": "field_monitor_notes",
+          "name": "field_monitor_notes",
+          "label": "Field Monitor Notes",
+          "type": "textarea",
+          "required": false
+        }
+      ]
+    },
+    "CD": {
+      "label": "C&D",
+      "fields": [
+        {
+          "id": "lat_long",
+          "name": "lat_long",
+          "label": "Lat / Long",
+          "type": "text",
+          "required": true,
+          "editable": true
+        },
+        {
+          "id": "address",
+          "name": "address",
+          "label": "Address",
+          "type": "text",
+          "required": true,
+          "editable": true
+        },
+        {
+          "id": "truck_number",
+          "name": "truck_number",
+          "label": "Truck Number",
+          "type": "scan",
+          "required": false
+        },
+        {
+          "id": "site_directed_to",
+          "name": "site_directed_to",
+          "label": "Site Directed To",
+          "type": "dropdown",
+          "required": true
+        },
+        {
+          "id": "pass_status",
+          "name": "pass_status",
+          "label": "Pass",
+          "type": "dropdown",
+          "required": true
+        },
+        {
+          "id": "photos",
+          "name": "photos",
+          "label": "Photos",
+          "type": "imageUpload",
+          "required": true
+        },
+        {
+          "id": "field_monitor_notes",
+          "name": "field_monitor_notes",
+          "label": "Field Monitor Notes",
+          "type": "textarea",
+          "required": false
+        }
+      ]
+    },
+    "Mixed": {
+      "label": "Mixed",
+      "fields": [
+        {
+          "id": "lat_long",
+          "name": "lat_long",
+          "label": "Lat / Long",
+          "type": "text",
+          "required": false
+        },
+        {
+          "id": "address",
+          "name": "address",
+          "label": "Address",
+          "type": "text",
+          "required": false
+        },
+        {
+          "id": "truck_number",
+          "name": "truck_number",
+          "label": "Truck Number",
+          "type": "scan",
+          "required": false
+        },
+        {
+          "id": "site_directed_to",
+          "name": "site_directed_to",
+          "label": "Site Directed To",
+          "type": "dropdown",
+          "required": false
+        },
+        {
+          "id": "pass_status",
+          "name": "pass_status",
+          "label": "Pass",
+          "type": "dropdown",
+          "required": false
+        },
+        {
+          "id": "photos",
+          "name": "photos",
+          "label": "Photos",
+          "type": "imageUpload",
+          "required": false
+        },
+        {
+          "id": "field_monitor_notes",
+          "name": "field_monitor_notes",
+          "label": "Field Monitor Notes",
+          "type": "textarea",
+          "required": false
+        }
+      ]
+    },
+    "Demo": {
+      "label": "Demo",
+      "fields": [
+        {
+          "id": "lat_long",
+          "name": "lat_long",
+          "label": "Lat / Long",
+          "type": "text",
+          "required": false
+        },
+        {
+          "id": "address",
+          "name": "address",
+          "label": "Address",
+          "type": "text",
+          "required": false
+        },
+        {
+          "id": "truck_number",
+          "name": "truck_number",
+          "label": "Truck Number",
+          "type": "scan",
+          "required": false
+        },
+        {
+          "id": "site_directed_to",
+          "name": "site_directed_to",
+          "label": "Site Directed To",
+          "type": "dropdown",
+          "required": false
+        },
+        {
+          "id": "roe_required",
+          "name": "roe_required",
+          "label": "ROE Required",
+          "type": "toggle",
+          "required": false
+        },
+        {
+          "id": "roe_reason",
+          "name": "roe_reason",
+          "label": "ROE Reason",
+          "type": "text",
+          "required": false
+        },
+        {
+          "id": "photos",
+          "name": "photos",
+          "label": "Photos",
+          "type": "imageUpload",
+          "required": false
+        },
+        {
+          "id": "field_monitor_notes",
+          "name": "field_monitor_notes",
+          "label": "Field Monitor Notes",
+          "type": "textarea",
+          "required": false
+        }
+      ]
+    },
+    "WhiteGoodHaul": {
+      "label": "White Good Haul",
+      "fields": [
+        {
+          "id": "lat_long",
+          "name": "lat_long",
+          "label": "Lat / Long",
+          "type": "text",
+          "required": false
+        },
+        {
+          "id": "address",
+          "name": "address",
+          "label": "Address",
+          "type": "text",
+          "required": false
+        },
+        {
+          "id": "truck_number",
+          "name": "truck_number",
+          "label": "Truck Number",
+          "type": "scan",
+          "required": false
+        },
+        {
+          "id": "site_directed_to",
+          "name": "site_directed_to",
+          "label": "Site Directed To",
+          "type": "dropdown",
+          "required": false
+        },
+        {
+          "id": "pass_status",
+          "name": "pass_status",
+          "label": "Pass",
+          "type": "dropdown",
+          "required": false
+        },
+        {
+          "id": "photos",
+          "name": "photos",
+          "label": "Photos",
+          "type": "imageUpload",
+          "required": false
+        },
+        {
+          "id": "field_monitor_notes",
+          "name": "field_monitor_notes",
+          "label": "Field Monitor Notes",
+          "type": "textarea",
+          "required": false
+        }
+      ]
+    },
+    "Leaners": {
+      "label": "Leaners",
+      "fields": [
+        {
+          "id": "lat_long",
+          "name": "lat_long",
+          "label": "Lat / Long",
+          "type": "text",
+          "required": false
+        },
+        {
+          "id": "address",
+          "name": "address",
+          "label": "Address",
+          "type": "text",
+          "required": false
+        },
+        {
+          "id": "truck_number",
+          "name": "truck_number",
+          "label": "Truck Number",
+          "type": "scan",
+          "required": false
+        },
+        {
+          "id": "diameter",
+          "name": "diameter",
+          "label": "Diameter",
+          "type": "number",
+          "required": false
+        },
+        {
+          "id": "hazard_type",
+          "name": "hazard_type",
+          "label": "Hazard Type",
+          "type": "dropdown",
+          "required": false
+        },
+        {
+          "id": "stump_extraction_required",
+          "name": "stump_extraction_required",
+          "label": "Stump Extraction Required",
+          "type": "toggle",
+          "required": false
+        },
+        {
+          "id": "roe_required",
+          "name": "roe_required",
+          "label": "ROE Required",
+          "type": "toggle",
+          "required": false
+        },
+        {
+          "id": "roe_reason",
+          "name": "roe_reason",
+          "label": "ROE Reason",
+          "type": "text",
+          "required": false
+        },
+        {
+          "id": "photos",
+          "name": "photos",
+          "label": "Photos",
+          "type": "imageUpload",
+          "required": false
+        },
+        {
+          "id": "field_monitor_notes",
+          "name": "field_monitor_notes",
+          "label": "Field Monitor Notes",
+          "type": "textarea",
+          "required": false
+        }
+      ]
+    },
+    "Hangers": {
+      "label": "Hangers",
+      "fields": [
+        {
+          "id": "lat_long",
+          "name": "lat_long",
+          "label": "Lat / Long",
+          "type": "text",
+          "required": false
+        },
+        {
+          "id": "address",
+          "name": "address",
+          "label": "Address",
+          "type": "text",
+          "required": false
+        },
+        {
+          "id": "truck_number",
+          "name": "truck_number",
+          "label": "Truck Number",
+          "type": "scan",
+          "required": false
+        },
+        {
+          "id": "site_directed_to",
+          "name": "site_directed_to",
+          "label": "Site Directed To",
+          "type": "dropdown",
+          "required": false
+        },
+        {
+          "id": "roe_required",
+          "name": "roe_required",
+          "label": "ROE Required",
+          "type": "toggle",
+          "required": false
+        },
+        {
+          "id": "roe_reason",
+          "name": "roe_reason",
+          "label": "ROE Reason",
+          "type": "text",
+          "required": false
+        },
+        {
+          "id": "photos",
+          "name": "photos",
+          "label": "Photos",
+          "type": "imageUpload",
+          "required": false
+        },
+        {
+          "id": "field_monitor_notes",
+          "name": "field_monitor_notes",
+          "label": "Field Monitor Notes",
+          "type": "textarea",
+          "required": false
+        }
+      ]
+    },
+    "StumpExtraction": {
+      "label": "Stump Extraction",
+      "fields": [
+        {
+          "id": "lat_long",
+          "name": "lat_long",
+          "label": "Lat / Long",
+          "type": "text",
+          "required": false
+        },
+        {
+          "id": "address",
+          "name": "address",
+          "label": "Address",
+          "type": "text",
+          "required": false
+        },
+        {
+          "id": "truck_number",
+          "name": "truck_number",
+          "label": "Truck Number",
+          "type": "scan",
+          "required": false
+        },
+        {
+          "id": "diameter",
+          "name": "diameter",
+          "label": "Diameter",
+          "type": "number",
+          "required": false
+        },
+        {
+          "id": "hazard_type",
+          "name": "hazard_type",
+          "label": "Hazard Type",
+          "type": "dropdown",
+          "required": false
+        },
+        {
+          "id": "stump_extraction_required",
+          "name": "stump_extraction_required",
+          "label": "Stump Extraction Required",
+          "type": "toggle",
+          "required": false
+        },
+        {
+          "id": "roe_required",
+          "name": "roe_required",
+          "label": "ROE Required",
+          "type": "toggle",
+          "required": false
+        },
+        {
+          "id": "roe_reason",
+          "name": "roe_reason",
+          "label": "ROE Reason",
+          "type": "text",
+          "required": false
+        },
+        {
+          "id": "photos",
+          "name": "photos",
+          "label": "Photos",
+          "type": "imageUpload",
+          "required": false
+        },
+        {
+          "id": "field_monitor_notes",
+          "name": "field_monitor_notes",
+          "label": "Field Monitor Notes",
+          "type": "textarea",
+          "required": false
+        }
+      ]
+    },
+    "StumpHaul": {
+      "label": "Stump Haul",
+      "fields": [
+        {
+          "id": "lat_long",
+          "name": "lat_long",
+          "label": "Lat / Long",
+          "type": "text",
+          "required": false
+        },
+        {
+          "id": "truck_number",
+          "name": "truck_number",
+          "label": "Truck Number",
+          "type": "scan",
+          "required": false
+        },
+        {
+          "id": "site_directed_to",
+          "name": "site_directed_to",
+          "label": "Site Directed To",
+          "type": "dropdown",
+          "required": false
+        },
+        {
+          "id": "diameter",
+          "name": "diameter",
+          "label": "Diameter",
+          "type": "number",
+          "required": false
+        },
+        {
+          "id": "photos",
+          "name": "photos",
+          "label": "Photos",
+          "type": "imageUpload",
+          "required": false
+        },
+        {
+          "id": "field_monitor_notes",
+          "name": "field_monitor_notes",
+          "label": "Field Monitor Notes",
+          "type": "textarea",
+          "required": false
+        }
+      ]
+    },
+    "HaulOut": {
+      "label": "Haul Out",
+      "fields": [
+        {
+          "id": "lat_long",
+          "name": "lat_long",
+          "label": "Lat / Long",
+          "type": "text",
+          "required": false
+        },
+        {
+          "id": "address",
+          "name": "address",
+          "label": "Address",
+          "type": "text",
+          "required": false
+        },
+        {
+          "id": "truck_number",
+          "name": "truck_number",
+          "label": "Truck Number",
+          "type": "scan",
+          "required": false
+        },
+        {
+          "id": "site_directed_to",
+          "name": "site_directed_to",
+          "label": "Site Directed To",
+          "type": "dropdown",
+          "required": false
+        },
+        {
+          "id": "photos",
+          "name": "photos",
+          "label": "Photos",
+          "type": "imageUpload",
+          "required": false
+        },
+        {
+          "id": "field_monitor_notes",
+          "name": "field_monitor_notes",
+          "label": "Field Monitor Notes",
+          "type": "textarea",
+          "required": false
+        }
+      ]
+    },
+    "Vehicles": {
+      "label": "Vehicles",
+      "fields": [
+        {
+          "id": "lat_long",
+          "name": "lat_long",
+          "label": "Lat / Long",
+          "type": "text",
+          "required": false
+        },
+        {
+          "id": "truck_number",
+          "name": "truck_number",
+          "label": "Truck Number",
+          "type": "scan",
+          "required": false
+        },
+        {
+          "id": "vin_hin",
+          "name": "vin_hin",
+          "label": "VIN / HIN",
+          "type": "text",
+          "required": false
+        },
+        {
+          "id": "photos",
+          "name": "photos",
+          "label": "Photos",
+          "type": "imageUpload",
+          "required": false
+        },
+        {
+          "id": "field_monitor_notes",
+          "name": "field_monitor_notes",
+          "label": "Field Monitor Notes",
+          "type": "textarea",
+          "required": false
+        }
+      ]
+    },
+    "Vessels": {
+      "label": "Vessels",
+      "fields": [
+        {
+          "id": "lat_long",
+          "name": "lat_long",
+          "label": "Lat / Long",
+          "type": "text",
+          "required": false
+        },
+        {
+          "id": "truck_number",
+          "name": "truck_number",
+          "label": "Truck Number",
+          "type": "scan",
+          "required": false
+        },
+        {
+          "id": "diameter",
+          "name": "diameter",
+          "label": "Diameter",
+          "type": "number",
+          "required": false
+        },
+        {
+          "id": "length",
+          "name": "length",
+          "label": "Length",
+          "type": "number",
+          "required": false
+        },
+        {
+          "id": "vin_hin",
+          "name": "vin_hin",
+          "label": "VIN / HIN",
+          "type": "text",
+          "required": false
+        },
+        {
+          "id": "photos",
+          "name": "photos",
+          "label": "Photos",
+          "type": "imageUpload",
+          "required": false
+        },
+        {
+          "id": "field_monitor_notes",
+          "name": "field_monitor_notes",
+          "label": "Field Monitor Notes",
+          "type": "textarea",
+          "required": false
+        }
+      ]
+    },
+    "HHW": {
+      "label": "HHW",
+      "fields": [
+        {
+          "id": "lat_long",
+          "name": "lat_long",
+          "label": "Lat / Long",
+          "type": "text",
+          "required": false
+        },
+        {
+          "id": "truck_number",
+          "name": "truck_number",
+          "label": "Truck Number",
+          "type": "scan",
+          "required": false
+        },
+        {
+          "id": "pass_status",
+          "name": "pass_status",
+          "label": "Pass",
+          "type": "dropdown",
+          "required": false
+        },
+        {
+          "id": "photos",
+          "name": "photos",
+          "label": "Photos",
+          "type": "imageUpload",
+          "required": false
+        },
+        {
+          "id": "field_monitor_notes",
+          "name": "field_monitor_notes",
+          "label": "Field Monitor Notes",
+          "type": "textarea",
+          "required": false
+        }
+      ]
+    },
+    "EWaste": {
+      "label": "E-Waste",
+      "fields": [
+        {
+          "id": "lat_long",
+          "name": "lat_long",
+          "label": "Lat / Long",
+          "type": "text",
+          "required": false
+        },
+        {
+          "id": "truck_number",
+          "name": "truck_number",
+          "label": "Truck Number",
+          "type": "scan",
+          "required": false
+        },
+        {
+          "id": "pass_status",
+          "name": "pass_status",
+          "label": "Pass",
+          "type": "dropdown",
+          "required": false
+        },
+        {
+          "id": "photos",
+          "name": "photos",
+          "label": "Photos",
+          "type": "imageUpload",
+          "required": false
+        },
+        {
+          "id": "field_monitor_notes",
+          "name": "field_monitor_notes",
+          "label": "Field Monitor Notes",
+          "type": "textarea",
+          "required": false
+        }
+      ]
+    }
+  }
+}

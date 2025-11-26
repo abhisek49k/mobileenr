@@ -13,11 +13,13 @@ import {
 } from '@/components/ui/Dropdown';
 import { useRouter } from 'expo-router';
 import { useThemeColors } from '@/hooks/useThemeColors';
+import { useProjectStore } from '@/store/projects/useProjectStore';
 
 export default function Step3DisposalSite() {
     const [disposalSite, setDisposalSite] = useState('');
     const router = useRouter();
     const colorTheme = useThemeColors();
+    const { selectedProject } = useProjectStore();
 
     return (
         <View className="flex-1 bg-background-secondary">
@@ -35,12 +37,9 @@ export default function Step3DisposalSite() {
 
             <View className="flex-1 px-8">
 
-                <View className='mt-10'>
-                    <Text className="text-2xl font-bold text-accent-primary text-center leading-8">
-                        Hurricane Ian COJ Debris
-                    </Text>
-                    <Text className="text-2xl font-bold text-accent-primary text-center leading-8 mb-12">
-                        Monitoring Services
+                <View className="items-center justify-center p-4 mb-8">
+                    <Text className="text-2xl font-bold text-center text-text-secondary">
+                        {selectedProject?.name}
                     </Text>
                 </View>
 
@@ -58,7 +57,7 @@ export default function Step3DisposalSite() {
                     </View>
                     <Button
                         className={`w-full py-4 mb-24 gap-2 ${!disposalSite ? 'opacity-50' : ''}`}
-                        onPress={() => router.push('/fieldmonitor/ticket-action')}
+                        onPress={() => router.push('/fieldmonitor/create-ticket')}
                         disabled={!disposalSite}
                     >
                         <Text className="text-lg font-semibold text-white">Proceed</Text>

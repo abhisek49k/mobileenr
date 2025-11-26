@@ -1,14 +1,12 @@
 // app/(private)/truck-cert/signatures.tsx
 
 import React, { useState, useCallback } from "react";
-import { View, Text, ScrollView, Pressable } from "react-native";
+import { View, Text, ScrollView } from "react-native";
 import { useRouter } from "expo-router";
 import Header from "@/components/ui/Header";
 import { Button } from "@/components/ui/Button";
 import { SignaturePad } from "@/components/ui/SignaturePad";
 import {
-  XCircle,
-  ArrowRight,
   ChevronLeft,
   CircleX,
   CirclePlus,
@@ -16,13 +14,12 @@ import {
 import { useThemeColors } from "@/hooks/useThemeColors";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useProjectStore } from "@/store/projects/useProjectStore";
-import { useTruckFormStore } from "@/store/truck-certification/useTruckStore";
-import { compressTruckCert } from "@/utils/truck";
 
 const SignatureScreen = () => {
   const router = useRouter();
   const colorTheme = useThemeColors();
   const insets = useSafeAreaInsets();
+  const { selectedTicket } = useProjectStore();
 
   // ---------- Local State ----------
   const [monitorSignature, setMonitorSignature] = useState<string | null>(null);
@@ -61,8 +58,8 @@ const SignatureScreen = () => {
           </Button>
         }
         headerCenter={
-          <Text className="text-xl font-semibold text-white">
-            Truck Certification
+          <Text className="text-[22px] font-semibold text-white">
+            {selectedTicket?.label}
           </Text>
         }
       />
@@ -70,7 +67,7 @@ const SignatureScreen = () => {
       {/* Sub-header */}
       <View className="bg-background-primary px-6 py-4 border-b border-border-primary">
         <Text className="text-xl font-semibold text-accent-primary text-center">
-          Truck Certification - Signatures
+          {selectedTicket?.label} - Signatures
         </Text>
       </View>
 

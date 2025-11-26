@@ -850,7 +850,7 @@ const ReviewScreen = () => {
             {/* NEXT Button */}
             <Button
               className="bg-accent-primary flex-1 py-4 rounded-2xl gap-2"
-              onPress={() => router.push("/truckcert/signature")}
+              onPress={() => router.push("/signature")}
             >
               <Text className="text-white font-base font-open-sans-bold">
                 Continue

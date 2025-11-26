@@ -1,0 +1,929 @@
+{
+  "formId": "site-monitor-form-v1",
+  "title": "Site Monitor Form",
+  "version": 2.0,
+  "createdAt": "2025-11-10T10:00:00Z",
+  "updatedAt": "2025-11-10T20:00:00Z",
+  "types": {
+    "Vegetative": {
+      "label": "Vegetative",
+      "fields": [
+        {
+          "id": "disposal_site",
+          "name": "disposal_site",
+          "label": "Disposal Site",
+          "type": "text",
+          "required": false,
+          "editable": false
+        },
+        {
+          "id": "truck_number",
+          "name": "truck_number",
+          "label": "Truck Number",
+          "type": "scan",
+          "required": true
+        },
+        {
+          "id": "site_directed_to",
+          "name": "site_directed_to",
+          "label": "Site Directed To",
+          "type": "dropdown",
+          "required": true
+        },
+        {
+          "id": "confirm_debris_type",
+          "name": "confirm_debris_type",
+          "label": "Confirm Debris Type",
+          "type": "dropdown",
+          "required": false
+        },
+        {
+          "id": "load_call_percent",
+          "name": "load_call_percent",
+          "label": "Load Call (%)",
+          "type": "text",
+          "required": false
+        },
+        {
+          "id": "tipping_ticket_number",
+          "name": "tipping_ticket_number",
+          "label": "Tipping Ticket Number",
+          "type": "number",
+          "required": false
+        },
+        {
+          "id": "tipping_fee_usd",
+          "name": "tipping_fee_usd",
+          "label": "Tipping Fee ($)",
+          "type": "number",
+          "required": false
+        },
+        {
+          "id": "tipping_ticket_photo",
+          "name": "tipping_ticket_photo",
+          "label": "Tipping Ticket Photo (Only 1)",
+          "type": "imageUpload",
+          "required": false
+        },
+        {
+          "id": "load_call_photo",
+          "name": "load_call_photo",
+          "label": "Load Call Photo (Min 1)",
+          "type": "imageUpload",
+          "required": false
+        },
+        {
+          "id": "photos",
+          "name": "photos",
+          "label": "Photos",
+          "type": "imageUpload",
+          "required": true
+        },
+        {
+          "id": "site_monitor_notes",
+          "name": "site_monitor_notes",
+          "label": "Site Monitor Notes",
+          "type": "textarea",
+          "required": false
+        }
+      ]
+    },
+    "CD": {
+      "label": "C&D",
+      "fields": [
+        {
+          "id": "disposal_site",
+          "name": "disposal_site",
+          "label": "Disposal Site",
+          "type": "text",
+          "required": false,
+          "editable": false
+        },
+        {
+          "id": "truck_number",
+          "name": "truck_number",
+          "label": "Truck Number",
+          "type": "scan",
+          "required": false
+        },
+        {
+          "id": "site_directed_to",
+          "name": "site_directed_to",
+          "label": "Site Directed To",
+          "type": "dropdown",
+          "required": true
+        },
+        {
+          "id": "confirm_debris_type",
+          "name": "confirm_debris_type",
+          "label": "Confirm Debris Type",
+          "type": "dropdown",
+          "required": false
+        },
+        {
+          "id": "load_call_percent",
+          "name": "load_call_percent",
+          "label": "Load Call (%)",
+          "type": "text",
+          "required": false
+        },
+        {
+          "id": "tipping_ticket_number",
+          "name": "tipping_ticket_number",
+          "label": "Tipping Ticket Number",
+          "type": "number",
+          "required": false
+        },
+        {
+          "id": "tipping_fee_usd",
+          "name": "tipping_fee_usd",
+          "label": "Tipping Fee ($)",
+          "type": "number",
+          "required": false
+        },
+        {
+          "id": "tipping_ticket_photo",
+          "name": "tipping_ticket_photo",
+          "label": "Tipping Ticket Photo (Only 1)",
+          "type": "imageUpload",
+          "required": false
+        },
+        {
+          "id": "load_call_photo",
+          "name": "load_call_photo",
+          "label": "Load Call Photo (Min 1)",
+          "type": "imageUpload",
+          "required": false
+        },
+        {
+          "id": "photos",
+          "name": "photos",
+          "label": "Photos",
+          "type": "imageUpload",
+          "required": true
+        },
+        {
+          "id": "site_monitor_notes",
+          "name": "site_monitor_notes",
+          "label": "Site Monitor Notes",
+          "type": "textarea",
+          "required": false
+        }
+      ]
+    },
+    "Mixed": {
+      "label": "Mixed",
+      "fields": [
+        {
+          "id": "disposal_site",
+          "name": "disposal_site",
+          "label": "Disposal Site",
+          "type": "text",
+          "required": false,
+          "editable": false
+        },
+        {
+          "id": "truck_number",
+          "name": "truck_number",
+          "label": "Truck Number",
+          "type": "scan",
+          "required": false
+        },
+        {
+          "id": "site_directed_to",
+          "name": "site_directed_to",
+          "label": "Site Directed To",
+          "type": "dropdown",
+          "required": false
+        },
+        {
+          "id": "confirm_debris_type",
+          "name": "confirm_debris_type",
+          "label": "Confirm Debris Type",
+          "type": "dropdown",
+          "required": false
+        },
+        {
+          "id": "load_call_percent",
+          "name": "load_call_percent",
+          "label": "Load Call (%)",
+          "type": "text",
+          "required": false
+        },
+        {
+          "id": "tipping_ticket_number",
+          "name": "tipping_ticket_number",
+          "label": "Tipping Ticket Number",
+          "type": "number",
+          "required": false
+        },
+        {
+          "id": "tipping_fee_usd",
+          "name": "tipping_fee_usd",
+          "label": "Tipping Fee ($)",
+          "type": "number",
+          "required": false
+        },
+        {
+          "id": "tipping_ticket_photo",
+          "name": "tipping_ticket_photo",
+          "label": "Tipping Ticket Photo (Only 1)",
+          "type": "imageUpload",
+          "required": false
+        },
+        {
+          "id": "load_call_photo",
+          "name": "load_call_photo",
+          "label": "Load Call Photo (Min 1)",
+          "type": "imageUpload",
+          "required": false
+        },
+        {
+          "id": "photos",
+          "name": "photos",
+          "label": "Photos",
+          "type": "imageUpload",
+          "required": false
+        },
+        {
+          "id": "site_monitor_notes",
+          "name": "site_monitor_notes",
+          "label": "Site Monitor Notes",
+          "type": "textarea",
+          "required": false
+        }
+      ]
+    },
+    "Demo": {
+      "label": "Demo",
+      "fields": [
+        {
+          "id": "disposal_site",
+          "name": "disposal_site",
+          "label": "Disposal Site",
+          "type": "text",
+          "required": false,
+          "editable": false
+        },
+        {
+          "id": "truck_number",
+          "name": "truck_number",
+          "label": "Truck Number",
+          "type": "scan",
+          "required": false
+        },
+        {
+          "id": "site_directed_to",
+          "name": "site_directed_to",
+          "label": "Site Directed To",
+          "type": "dropdown",
+          "required": false
+        },
+        {
+          "id": "roe_required",
+          "name": "roe_required",
+          "label": "ROE Required",
+          "type": "toggle",
+          "required": false
+        },
+        {
+          "id": "roe_reason",
+          "name": "roe_reason",
+          "label": "ROE Reason",
+          "type": "text",
+          "required": false
+        },
+        {
+          "id": "confirm_debris_type",
+          "name": "confirm_debris_type",
+          "label": "Confirm Debris Type",
+          "type": "dropdown",
+          "required": false
+        },
+        {
+          "id": "load_call_percent",
+          "name": "load_call_percent",
+          "label": "Load Call (%)",
+          "type": "text",
+          "required": false
+        },
+        {
+          "id": "tipping_ticket_number",
+          "name": "tipping_ticket_number",
+          "label": "Tipping Ticket Number",
+          "type": "number",
+          "required": false
+        },
+        {
+          "id": "tipping_fee_usd",
+          "name": "tipping_fee_usd",
+          "label": "Tipping Fee ($)",
+          "type": "number",
+          "required": false
+        },
+        {
+          "id": "tipping_ticket_photo",
+          "name": "tipping_ticket_photo",
+          "label": "Tipping Ticket Photo (Only 1)",
+          "type": "imageUpload",
+          "required": false
+        },
+        {
+          "id": "load_call_photo",
+          "name": "load_call_photo",
+          "label": "Load Call Photo (Min 1)",
+          "type": "imageUpload",
+          "required": false
+        },
+        {
+          "id": "photos",
+          "name": "photos",
+          "label": "Photos",
+          "type": "imageUpload",
+          "required": false
+        },
+        {
+          "id": "site_monitor_notes",
+          "name": "site_monitor_notes",
+          "label": "Site Monitor Notes",
+          "type": "textarea",
+          "required": false
+        }
+      ]
+    },
+    "WhiteGoodHaul": {
+      "label": "White Good Haul",
+      "fields": [
+        {
+          "id": "disposal_site",
+          "name": "disposal_site",
+          "label": "Disposal Site",
+          "type": "text",
+          "required": false,
+          "editable": false
+        },
+        {
+          "id": "truck_number",
+          "name": "truck_number",
+          "label": "Truck Number",
+          "type": "scan",
+          "required": false
+        },
+        {
+          "id": "site_directed_to",
+          "name": "site_directed_to",
+          "label": "Site Directed To",
+          "type": "dropdown",
+          "required": false
+        },
+        {
+          "id": "confirm_debris_type",
+          "name": "confirm_debris_type",
+          "label": "Confirm Debris Type",
+          "type": "dropdown",
+          "required": false
+        },
+        {
+          "id": "confirm_quantity",
+          "name": "confirm_quantity",
+          "label": "Confirm Quantity",
+          "type": "text",
+          "required": false
+        },
+        {
+          "id": "tipping_ticket_number",
+          "name": "tipping_ticket_number",
+          "label": "Tipping Ticket Number",
+          "type": "number",
+          "required": false
+        },
+        {
+          "id": "tipping_fee_usd",
+          "name": "tipping_fee_usd",
+          "label": "Tipping Fee ($)",
+          "type": "number",
+          "required": false
+        },
+        {
+          "id": "tipping_ticket_photo",
+          "name": "tipping_ticket_photo",
+          "label": "Tipping Ticket Photo (Only 1)",
+          "type": "imageUpload",
+          "required": false
+        },
+        {
+          "id": "load_call_photo",
+          "name": "load_call_photo",
+          "label": "Load Call Photo (Min 1)",
+          "type": "imageUpload",
+          "required": false
+        },
+        {
+          "id": "photos",
+          "name": "photos",
+          "label": "Photos",
+          "type": "imageUpload",
+          "required": false
+        },
+        {
+          "id": "site_monitor_notes",
+          "name": "site_monitor_notes",
+          "label": "Site Monitor Notes",
+          "type": "textarea",
+          "required": false
+        }
+      ]
+    },
+    "StumpHaul": {
+      "label": "Stump Haul",
+      "fields": [
+        {
+          "id": "disposal_site",
+          "name": "disposal_site",
+          "label": "Disposal Site",
+          "type": "text",
+          "required": false,
+          "editable": false
+        },
+        {
+          "id": "truck_number",
+          "name": "truck_number",
+          "label": "Truck Number",
+          "type": "scan",
+          "required": false
+        },
+        {
+          "id": "site_directed_to",
+          "name": "site_directed_to",
+          "label": "Site Directed To",
+          "type": "dropdown",
+          "required": false
+        },
+        {
+          "id": "diameter",
+          "name": "diameter",
+          "label": "Diameter",
+          "type": "number",
+          "required": false
+        },
+        {
+          "id": "confirm_debris_type",
+          "name": "confirm_debris_type",
+          "label": "Confirm Debris Type",
+          "type": "dropdown",
+          "required": false
+        },
+        {
+          "id": "confirm_quantity",
+          "name": "confirm_quantity",
+          "label": "Confirm Quantity",
+          "type": "text",
+          "required": false
+        },
+        {
+          "id": "tipping_ticket_number",
+          "name": "tipping_ticket_number",
+          "label": "Tipping Ticket Number",
+          "type": "number",
+          "required": false
+        },
+        {
+          "id": "tipping_fee_usd",
+          "name": "tipping_fee_usd",
+          "label": "Tipping Fee ($)",
+          "type": "number",
+          "required": false
+        },
+        {
+          "id": "tipping_ticket_photo",
+          "name": "tipping_ticket_photo",
+          "label": "Tipping Ticket Photo (Only 1)",
+          "type": "imageUpload",
+          "required": false
+        },
+        {
+          "id": "load_call_photo",
+          "name": "load_call_photo",
+          "label": "Load Call Photo (Min 1)",
+          "type": "imageUpload",
+          "required": false
+        },
+        {
+          "id": "photos",
+          "name": "photos",
+          "label": "Photos",
+          "type": "imageUpload",
+          "required": false
+        },
+        {
+          "id": "field_monitor_notes",
+          "name": "field_monitor_notes",
+          "label": "Field Monitor Notes",
+          "type": "textarea",
+          "required": false
+        }
+      ]
+    },
+    "HaulOut": {
+      "label": "Haul Out",
+      "fields": [
+        {
+          "id": "disposal_site",
+          "name": "disposal_site",
+          "label": "Disposal Site",
+          "type": "text",
+          "required": false,
+          "editable": false
+        },
+        {
+          "id": "truck_number",
+          "name": "truck_number",
+          "label": "Truck Number",
+          "type": "scan",
+          "required": false
+        },
+        {
+          "id": "site_directed_to",
+          "name": "site_directed_to",
+          "label": "Site Directed To",
+          "type": "dropdown",
+          "required": false
+        },
+        {
+          "id": "confirm_debris_type",
+          "name": "confirm_debris_type",
+          "label": "Confirm Debris Type",
+          "type": "dropdown",
+          "required": false
+        },
+        {
+          "id": "load_call_percent",
+          "name": "load_call_percent",
+          "label": "Load Call (%)",
+          "type": "text",
+          "required": false
+        },
+        {
+          "id": "tipping_ticket_number",
+          "name": "tipping_ticket_number",
+          "label": "Tipping Ticket Number",
+          "type": "number",
+          "required": false
+        },
+        {
+          "id": "tipping_fee_usd",
+          "name": "tipping_fee_usd",
+          "label": "Tipping Fee ($)",
+          "type": "number",
+          "required": false
+        },
+        {
+          "id": "tipping_ticket_photo",
+          "name": "tipping_ticket_photo",
+          "label": "Tipping Ticket Photo (Only 1)",
+          "type": "imageUpload",
+          "required": false
+        },
+        {
+          "id": "load_call_photo",
+          "name": "load_call_photo",
+          "label": "Load Call Photo (Min 1)",
+          "type": "imageUpload",
+          "required": false
+        },
+        {
+          "id": "photos",
+          "name": "photos",
+          "label": "Photos",
+          "type": "imageUpload",
+          "required": false
+        },
+        {
+          "id": "field_monitor_notes",
+          "name": "field_monitor_notes",
+          "label": "Field Monitor Notes",
+          "type": "textarea",
+          "required": false
+        }
+      ]
+    },
+    "Vehicles": {
+      "label": "Vehicles",
+      "fields": [
+        {
+          "id": "disposal_site",
+          "name": "disposal_site",
+          "label": "Disposal Site",
+          "type": "text",
+          "required": false,
+          "editable": false
+        },
+        {
+          "id": "truck_number",
+          "name": "truck_number",
+          "label": "Truck Number",
+          "type": "scan",
+          "required": false
+        },
+        {
+          "id": "vin_hin",
+          "name": "vin_hin",
+          "label": "VIN / HIN",
+          "type": "text",
+          "required": false
+        },
+        {
+          "id": "confirm_debris_type",
+          "name": "confirm_debris_type",
+          "label": "Confirm Debris Type",
+          "type": "dropdown",
+          "required": false
+        },
+        {
+          "id": "tipping_ticket_number",
+          "name": "tipping_ticket_number",
+          "label": "Tipping Ticket Number",
+          "type": "number",
+          "required": false
+        },
+        {
+          "id": "tipping_fee_usd",
+          "name": "tipping_fee_usd",
+          "label": "Tipping Fee ($)",
+          "type": "number",
+          "required": false
+        },
+        {
+          "id": "tipping_ticket_photo",
+          "name": "tipping_ticket_photo",
+          "label": "Tipping Ticket Photo (Only 1)",
+          "type": "imageUpload",
+          "required": false
+        },
+        {
+          "id": "photos",
+          "name": "photos",
+          "label": "Photos",
+          "type": "imageUpload",
+          "required": false
+        },
+        {
+          "id": "field_monitor_notes",
+          "name": "field_monitor_notes",
+          "label": "Field Monitor Notes",
+          "type": "textarea",
+          "required": false
+        }
+      ]
+    },
+    "Vessels": {
+      "label": "Vessels",
+      "fields": [
+        {
+          "id": "disposal_site",
+          "name": "disposal_site",
+          "label": "Disposal Site",
+          "type": "text",
+          "required": false,
+          "editable": false
+        },
+        {
+          "id": "truck_number",
+          "name": "truck_number",
+          "label": "Truck Number",
+          "type": "scan",
+          "required": false
+        },
+        {
+          "id": "diameter",
+          "name": "diameter",
+          "label": "Diameter",
+          "type": "number",
+          "required": false
+        },
+        {
+          "id": "length",
+          "name": "length",
+          "label": "Length",
+          "type": "number",
+          "required": false
+        },
+        {
+          "id": "vin_hin",
+          "name": "vin_hin",
+          "label": "VIN / HIN",
+          "type": "text",
+          "required": false
+        },
+        {
+          "id": "confirm_debris_type",
+          "name": "confirm_debris_type",
+          "label": "Confirm Debris Type",
+          "type": "dropdown",
+          "required": false
+        },
+        {
+          "id": "tipping_ticket_number",
+          "name": "tipping_ticket_number",
+          "label": "Tipping Ticket Number",
+          "type": "number",
+          "required": false
+        },
+        {
+          "id": "tipping_fee_usd",
+          "name": "tipping_fee_usd",
+          "label": "Tipping Fee ($)",
+          "type": "number",
+          "required": false
+        },
+        {
+          "id": "tipping_ticket_photo",
+          "name": "tipping_ticket_photo",
+          "label": "Tipping Ticket Photo (Only 1)",
+          "type": "imageUpload",
+          "required": false
+        },
+        {
+          "id": "photos",
+          "name": "photos",
+          "label": "Photos",
+          "type": "imageUpload",
+          "required": false
+        },
+        {
+          "id": "field_monitor_notes",
+          "name": "field_monitor_notes",
+          "label": "Field Monitor Notes",
+          "type": "textarea",
+          "required": false
+        }
+      ]
+    },
+    "HHW": {
+      "label": "HHW",
+      "fields": [
+        {
+          "id": "disposal_site",
+          "name": "disposal_site",
+          "label": "Disposal Site",
+          "type": "text",
+          "required": false,
+          "editable": false
+        },
+        {
+          "id": "truck_number",
+          "name": "truck_number",
+          "label": "Truck Number",
+          "type": "scan",
+          "required": false
+        },
+        {
+          "id": "confirm_debris_type",
+          "name": "confirm_debris_type",
+          "label": "Confirm Debris Type",
+          "type": "dropdown",
+          "required": false
+        },
+        {
+          "id": "load_call_percent",
+          "name": "load_call_percent",
+          "label": "Load Call (%)",
+          "type": "text",
+          "required": false
+        },
+        {
+          "id": "confirm_quantity",
+          "name": "confirm_quantity",
+          "label": "Confirm Quantity",
+          "type": "text",
+          "required": false
+        },
+        {
+          "id": "tipping_ticket_number",
+          "name": "tipping_ticket_number",
+          "label": "Tipping Ticket Number",
+          "type": "number",
+          "required": false
+        },
+        {
+          "id": "tipping_fee_usd",
+          "name": "tipping_fee_usd",
+          "label": "Tipping Fee ($)",
+          "type": "number",
+          "required": false
+        },
+        {
+          "id": "tipping_ticket_photo",
+          "name": "tipping_ticket_photo",
+          "label": "Tipping Ticket Photo (Only 1)",
+          "type": "imageUpload",
+          "required": false
+        },
+        {
+          "id": "load_call_photo",
+          "name": "load_call_photo",
+          "label": "Load Call Photo (Min 1)",
+          "type": "imageUpload",
+          "required": false
+        },
+        {
+          "id": "photos",
+          "name": "photos",
+          "label": "Photos",
+          "type": "imageUpload",
+          "required": false
+        },
+        {
+          "id": "field_monitor_notes",
+          "name": "field_monitor_notes",
+          "label": "Field Monitor Notes",
+          "type": "textarea",
+          "required": false
+        }
+      ]
+    },
+    "EWaste": {
+      "label": "E-Waste",
+      "fields": [
+        {
+          "id": "disposal_site",
+          "name": "disposal_site",
+          "label": "Disposal Site",
+          "type": "text",
+          "required": false,
+          "editable": false
+        },
+        {
+          "id": "truck_number",
+          "name": "truck_number",
+          "label": "Truck Number",
+          "type": "scan",
+          "required": false
+        },
+        {
+          "id": "confirm_debris_type",
+          "name": "confirm_debris_type",
+          "label": "Confirm Debris Type",
+          "type": "dropdown",
+          "required": false
+        },
+        {
+          "id": "load_call_percent",
+          "name": "load_call_percent",
+          "label": "Load Call (%)",
+          "type": "text",
+          "required": false
+        },
+        {
+          "id": "confirm_quantity",
+          "name": "confirm_quantity",
+          "label": "Confirm Quantity",
+          "type": "text",
+          "required": false
+        },
+        {
+          "id": "tipping_ticket_number",
+          "name": "tipping_ticket_number",
+          "label": "Tipping Ticket Number",
+          "type": "number",
+          "required": false
+        },
+        {
+          "id": "tipping_fee_usd",
+          "name": "tipping_fee_usd",
+          "label": "Tipping Fee ($)",
+          "type": "number",
+          "required": false
+        },
+        {
+          "id": "tipping_ticket_photo",
+          "name": "tipping_ticket_photo",
+          "label": "Tipping Ticket Photo (Only 1)",
+          "type": "imageUpload",
+          "required": false
+        },
+        {
+          "id": "load_call_photo",
+          "name": "load_call_photo",
+          "label": "Load Call Photo (Min 1)",
+          "type": "imageUpload",
+          "required": false
+        },
+        {
+          "id": "photos",
+          "name": "photos",
+          "label": "Photos",
+          "type": "imageUpload",
+          "required": false
+        },
+        {
+          "id": "field_monitor_notes",
+          "name": "field_monitor_notes",
+          "label": "Field Monitor Notes",
+          "type": "textarea",
+          "required": false
+        }
+      ]
+    }
+  }
+}

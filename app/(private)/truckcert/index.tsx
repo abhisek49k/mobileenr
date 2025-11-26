@@ -4,8 +4,6 @@ import {
   View,
   Text,
   ScrollView,
-  Pressable,
-  Image,
   ActivityIndicator,
 } from "react-native";
 import React, { useEffect, useState } from "react";
@@ -13,13 +11,10 @@ import Header from "@/components/ui/Header";
 import { Button } from "@/components/ui/Button";
 import {
   ChevronLeft,
-  CheckCircle,
-  XCircle,
   CircleX,
   ArrowRight,
 } from "lucide-react-native";
 import { useRouter } from "expo-router";
-import { format, set } from "date-fns";
 import { Separator } from "@/components/ui/Separator";
 import { useThemeColors } from "@/hooks/useThemeColors";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
@@ -42,8 +37,6 @@ const AssignProjectScreen = () => {
   const router = useRouter();
   const insets = useSafeAreaInsets();
   const [firstSection, setFirstSection] = useState<any>();
-  const [prime_contractor, setPrime_contractor] = useState<any>();
-  const [sub_contractor, setSub_contractor] = useState<any>();
 
   // Use your custom schema synchronization hook
   const { schema, loading } = useTruckSchemaStore();
@@ -83,6 +76,10 @@ const AssignProjectScreen = () => {
         <ActivityIndicator size="large" color={colorTheme["accentPrimary"]} />
       </View>
     );
+
+
+  const isFormValid = !!selectedProject && !!selectedPrime && !!selectedSub;
+
 
   return (
     <View
@@ -161,7 +158,7 @@ const AssignProjectScreen = () => {
           </View>
           <View className="pt-4">
             <Label htmlFor="prime_contractor" className="mb-2" required>
-              Prime Contractor
+              Sub Contractor
             </Label>
             <DropdownMenu
               value={selectedSub?.value}
@@ -207,6 +204,7 @@ const AssignProjectScreen = () => {
             <Button
               className="bg-accent-primary flex-1 py-4 rounded-2xl gap-2"
               onPress={() => router.push(firstSection)}
+              disabled={!isFormValid}
             >
               <Text className="text-white font-base font-open-sans-bold">
                 Next

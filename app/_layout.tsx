@@ -17,19 +17,26 @@ import NetInfo from "@react-native-community/netinfo";
 import { useNetworkStore } from "@/store/network";
 import { Pressable, Text, View } from "react-native";
 import { useTruckSchemaStore } from "@/store/truck-certification/useTruckSchemaStore";
+import { useAuthStore } from "@/store/useAuthStore";
+import { useFieldMonitorSchemaStore } from "@/store/field-monitor/fieldMonitorSchemaStore";
+import { useSiteMonitorSchemaStore } from "@/store/site-monitor/useSiteMonitorSchemaStore";
 
 SplashScreen.preventAutoHideAsync();
-const isLoggedIn = true;
 
 export default function RootLayout() {
   const setOnline = useNetworkStore((state) => state.setOnline);
   const router = useRouter();
-  const { schema, loading, syncSchema } = useTruckSchemaStore();
+  const { loading, syncSchema } = useTruckSchemaStore();
+  const { loading: fieldLoading, syncSchema: syncfieldSchema} = useFieldMonitorSchemaStore()
+  const { loading: siteLoading, syncSchema: syncsiteSchema} = useSiteMonitorSchemaStore()
+  const { isLoggedIn }  =  useAuthStore()
 
   // console.log("🚀 remoteData", schema, loading);
 
   useEffect(() => {
     syncSchema(); // run only once
+    syncfieldSchema()
+    syncsiteSchema()
   }, []);
 
   const [loaded, error] = useFonts({
@@ -39,7 +46,7 @@ export default function RootLayout() {
   });
 
   useEffect(() => {
-    if (loaded || error || loading) {
+    if (loaded || error || loading || fieldLoading || siteLoading) {
       SplashScreen.hideAsync();
     }
   }, [loaded, error]);

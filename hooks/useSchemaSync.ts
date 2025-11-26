@@ -2,6 +2,7 @@ import { useEffect, useState, useMemo } from "react";
 import { createMMKV } from "react-native-mmkv";
 import { Directory, File, Paths } from "expo-file-system/next";
 import { getTruckCertSchema } from "@/api/client"; // Assuming this API client exists
+import localSchema from "@/assets/schema/truck-cert.json";
 
 // =========================================================================
 // 1. TYPE DEFINITIONS
@@ -210,7 +211,8 @@ export function useSchemaSync(currentSectionId?: string): UseSchemaSyncResult {
         }
 
         // Fetch latest schema
-        remoteSchema = (await getTruckCertSchema()) as FormSchema;
+        // remoteSchema = (await getTruckCertSchema()) as FormSchema;
+        remoteSchema = localSchema as FormSchema;
 
         if (remoteSchema && remoteSchema.sections) {
           const savedVersion = storage.getString(SCHEMA_VERSION_KEY);

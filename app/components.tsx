@@ -30,6 +30,7 @@ import { TextField } from "@/components/ui/TextField";
 import { Label } from "@/components/ui/Label";
 import { RadioGroup } from "@/components/ui/RadioGroup";
 import { InputView } from "@/components/ui/InputView";
+import { Scanner } from "@/components/ui/Scanner";
 
 // Mock image for the dialog
 const lengthImage = require("@/assets/images/truck-icon.png");
@@ -49,6 +50,8 @@ const Components = () => {
   const [length, setLength] = useState("");
   const [width, setWidth] = useState("");
   const [height, setHeight] = useState("");
+  const [values, setValues] = useState();
+  const [scannedData, setScannedData] = useState()
   // Mock truck icon for local assets
   const truckIcon = require("@/assets/images/truck-icon.png");
 
@@ -75,6 +78,28 @@ const Components = () => {
           <Text className="text-lg font-semibold text-white">Components</Text>
         }
       />
+
+      <Scanner.Root
+        onValueChange={(value) => setValues({ truck_number: value })}
+        onDataScanned={(data) => setScannedData(data)}
+      >
+        <Scanner.Trigger>
+          <View className="flex-row">
+            <Scanner.Input placeholder="Scan Truck QR Code" />
+            <Scanner.ScanButton />
+          </View>
+        </Scanner.Trigger>
+
+        <Scanner.Status />
+
+        <Scanner.Details>
+          <Scanner.DetailRow label="Make" value={scannedData?.truck_make} />
+          <Scanner.DetailRow label="Color" value={scannedData?.truck_color} isColor={true} />
+          <Scanner.DetailRow label="Sideboard" value={scannedData?.has_sideboards ? 'Yes' : 'No'} />
+          <Scanner.DetailRow label="CY" value={scannedData?.rb_curved_surface_area} />
+        </Scanner.Details>
+      </Scanner.Root>
+
       <View className="flex flex-row gap-2 p-2">
         <DropdownMenu value={framework} onValueChange={setFramework}>
           <DropdownMenuTrigger

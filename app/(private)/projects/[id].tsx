@@ -14,6 +14,7 @@ import Button from "@/components/ui/Button";
 import { useThemeColors } from "@/hooks/useThemeColors";
 import { Card } from "@/components/ui/Card";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { useProjectStore } from "@/store/projects/useProjectStore";
 
 export default function ProjectDetailScreen() {
   const colorTheme = useThemeColors();
@@ -22,6 +23,7 @@ export default function ProjectDetailScreen() {
 
   // Get the dynamic 'id' parameter from the URL
   const { id, name } = useLocalSearchParams<{ id: string; name: string }>();
+  const { setTicketType } = useProjectStore();
 
   // In a real app, you would use this 'id' to fetch detailed project data from an API.
   // For example: const { data: project, isLoading } = useQuery(['project', id], () => fetchProjectById(id));
@@ -53,7 +55,10 @@ export default function ProjectDetailScreen() {
         <View className="flex-row flex-wrap gap-2 justify-between p-4">
           <Card.Root
             className="w-[169px] h-[132px]"
-            onPress={() => router.push("/fieldmonitor")}
+            onPress={() => {
+              setTicketType({ label: "Field Monitor", value: 'field-monitor' })
+              router.push("/fieldmonitor")
+            }}
           >
             <Card.Content>
               <TreePine size={48} color={colorTheme["textSecondary"]} />
@@ -65,7 +70,10 @@ export default function ProjectDetailScreen() {
 
           <Card.Root
             className="w-[169px] h-[132px]"
-            onPress={() => router.push("/sitemonitor")}
+            onPress={() => {
+              setTicketType({ label: "Site Monitor", value: 'site-monitor' })
+              router.push("/sitemonitor")
+            }}
           >
             <Card.Content>
               <Eye size={48} color={colorTheme["textSecondary"]} />
@@ -77,7 +85,10 @@ export default function ProjectDetailScreen() {
 
           <Card.Root
             className="w-[169px] h-[132px]"
-            onPress={() => router.push("/truckcert")}
+            onPress={() => {
+              setTicketType({ label: "Truck Certification", value: 'truck-cert' })
+              router.push("/truckcert")
+            }}
           >
             <Card.Content>
               <Truck size={48} color={colorTheme["textSecondary"]} />
@@ -96,6 +107,6 @@ export default function ProjectDetailScreen() {
           <Text className="text-accent-primary font-open-sans">GISKernel</Text>
         </Text>
       </View>
-    </View>
+    </View >
   );
 }

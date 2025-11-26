@@ -6,17 +6,20 @@ import Button from '@/components/ui/Button';
 import { useRouter } from 'expo-router';
 import { ArrowRight, ChevronLeft, CircleX, RefreshCcw } from 'lucide-react-native';
 import { useThemeColors } from '@/hooks/useThemeColors';
-import { Switch } from '@/components/ui/Switch';
+import { useSiteMonitorSchemaStore } from '@/store/site-monitor/useSiteMonitorSchemaStore';
 import { Separator } from '@/components/ui/Separator';
-import { useFieldMonitorSchemaStore } from '@/store/field-monitor/fieldMonitorSchemaStore';
-import { FieldMonitorFormRenderer } from '@/components/fieldmonitor/FormRenderer';
+import { SiteMonitorFormRenderer } from '@/components/sitemonitor/FormRenderer';
+import { Switch } from '@/components/ui/Switch';
+
+let debrisType = "Vegetative"
 
 const Createticket = () => {
 
   const insets = useSafeAreaInsets();
   const router = useRouter();
   const colorTheme = useThemeColors();
-  const { schema, loading } = useFieldMonitorSchemaStore();
+
+  const { schema, loading } = useSiteMonitorSchemaStore();
 
   return (
     <View
@@ -72,7 +75,7 @@ const Createticket = () => {
               </View>
               <Separator className='h-[2px]' />
               <View className='flex-1 p-8'>
-                <FieldMonitorFormRenderer schema={schema} />
+                <SiteMonitorFormRenderer schema={schema} selectedType={debrisType} />
               </View>
               <Separator />
 
@@ -91,7 +94,7 @@ const Createticket = () => {
                 {/* NEXT Button */}
                 <Button
                   className="bg-accent-primary flex-1 py-4 rounded-2xl gap-2"
-                  onPress={() => router.push('/fieldmonitor/review')}
+                  onPress={() => router.push('/sitemonitor/review')}
                 >
                   <Text className="text-white font-base font-open-sans-bold">
                     Preview Ticket

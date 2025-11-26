@@ -14,7 +14,7 @@ import Animated, {
   withTiming,
   interpolateColor,
 } from "react-native-reanimated";
-import { cn } from "@/lib/utils";
+import { cn, formatUSPhone } from "@/lib/utils";
 import { useThemeColors } from "@/hooks/useThemeColors";
 
 // --- CONTEXT ---
@@ -33,7 +33,7 @@ const LeftIcon: React.FC<IconProps> = ({ children, className }) => (
   // Add pointerEvents="box-none" to allow touches to pass through to the TextInput
   <View
     className={cn("absolute left-0 top-0 bottom-0 justify-center pl-3", className)}
-    pointerEvents="box-none" 
+    pointerEvents="box-none"
   >
     {children}
   </View>
@@ -58,7 +58,7 @@ type TextFieldRootProps = Omit<TextInputProps, "editable"> & {
   disabled?: boolean;
   onPress?: (e?: GestureResponderEvent) => void;
   rippleColor?: string;
-  type?: "text" | "email" | "password" | "number";
+  type?: "text" | "email" | "password" | "number" | "phone-number";
 };
 
 const Root = forwardRef<RNTextInput, TextFieldRootProps>(
@@ -116,7 +116,7 @@ const Root = forwardRef<RNTextInput, TextFieldRootProps>(
             onPress?.(e);
           }}
           android_ripple={{ color: rippleColor || "rgba(0,0,0,0.1)" }}
-          pointerEvents="box-none" 
+          pointerEvents="box-none"
         >
           <Animated.View
             style={animatedContainerStyle}
@@ -138,7 +138,15 @@ const Root = forwardRef<RNTextInput, TextFieldRootProps>(
               editable={!disabled}
               value={value}
               keyboardType={keyboardType}
-              {...props}
+              {...props}  // <-- props first!
+              onChangeText={(text) => {
+                if (type === "phone-number") {
+                  const formatted = formatUSPhone(text);
+                  props.onChangeText?.(formatted);
+                } else {
+                  props.onChangeText?.(text);
+                }
+              }}
               className={cn(
                 "h-full px-4 text-base text-text-primary",
                 hasLeftIcon && "pl-11",
@@ -147,6 +155,7 @@ const Root = forwardRef<RNTextInput, TextFieldRootProps>(
                 hasLeftIcon || hasRightIcon ? "w-80" : "w-full",
               )}
             />
+
           </Animated.View>
         </Pressable>
       </TextFieldContext.Provider>

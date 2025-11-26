@@ -47,6 +47,7 @@ export const InputView: React.FC<InputViewProps> = ({
   disabled = false,
   className,
 }) => {
+  
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [internalValue, setInternalValue] = useState(value);
   const colorTheme = useThemeColors();
@@ -124,19 +125,14 @@ export const InputView: React.FC<InputViewProps> = ({
         enableAndroidBlur
       >
         <Dialog.Portal>
-          <Dialog.Content showCloseButton={false} className="p-0">
-            <Dialog.Header className="flex-row items-center justify-between">
+          <Dialog.Content className="p-0">
+            <Dialog.Header className="flex-row items-center justify-between pl-6">
               <Dialog.Title>{dialogTitle}</Dialog.Title>
-              <Dialog.Close>
-                <Pressable className="p-1" hitSlop={10} onPress={handleCancel}>
-                  <X size={20} className="text-text-secondary" />
-                </Pressable>
-              </Dialog.Close>
             </Dialog.Header>
 
             <View className="p-6 pt-4">
               <Image
-                source={dialogImage}
+                source={{ uri: dialogImage }}
                 className="w-full h-32 rounded-lg mb-4"
                 resizeMode="contain"
               />

@@ -17,6 +17,7 @@ import Header from "@/components/ui/Header";
 import { TextField } from "@/components/ui/TextField"; // Assuming components are in `components/ui`
 import { Label } from "@/components/ui/Label";
 import { Eye, EyeOff } from "lucide-react-native";
+import { useAuthStore } from "@/store/useAuthStore";
 
 export default function LoginScreen() {
     const route = useRouter();
@@ -25,6 +26,7 @@ export default function LoginScreen() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+    const { login }  =  useAuthStore()
 
     // --- Refs for focusing inputs when labels are pressed ---
     const usernameInputRef = useRef<RNTextInput>(null);
@@ -115,7 +117,7 @@ export default function LoginScreen() {
                         {/* --- Login Button --- */}
                         <Button
                             className="w-full py-4 rounded-[14px] mt-2" // Adjusted padding and rounding
-                            onPress={() => {}}
+                            onPress={login}
                         >
                             <Text className="text-lg font-semibold text-white">Login</Text>
                         </Button>

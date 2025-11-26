@@ -6,7 +6,7 @@ import {
   ScrollView,
   Platform,
 } from "react-native";
-import React, { useMemo, useCallback } from "react";
+import React, { useMemo, useCallback, useState } from "react";
 import Header from "@/components/ui/Header";
 import { ScreenIndicator } from "@/components/ui/ScreenIndicator";
 import { Separator } from "@/components/ui/Separator";
@@ -20,6 +20,7 @@ import { useProjectStore } from "@/store/projects/useProjectStore";
 import { useTruckFormStore } from "@/store/truck-certification/useTruckStore";
 import { useTruckSchemaStore } from "@/store/truck-certification/useTruckSchemaStore";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { Dialog } from "@/components/ui/Dialog";
 
 // --- Type Definitions for Schema (Required for the dynamic logic) ---
 interface FieldOption {
@@ -69,6 +70,8 @@ export default function SectionPage() {
   const colorTheme = useThemeColors();
   const insets = useSafeAreaInsets();
   const { section: sectionId } = useLocalSearchParams<{ section?: string }>();
+  const [isDialogOpen, setDialogOpen] = useState(false);
+
 
   // 💡 REQUIRED: Get the current form values
   const formState = useTruckFormStore((state) => state.values);
@@ -171,7 +174,23 @@ export default function SectionPage() {
     );
   }
 
-  console.log(finalNextRoute, "--- finalNextRoute ---");
+  const isSectionValid = useMemo(() => {
+    if (!currentSection) return false;
+
+    return currentSection.fields
+      .filter((field: Field) => field.required) // ✅ only required fields
+      .every((field: Field) => {
+        const value = formState[field.name];
+
+        // For toggle (boolean) fields, `false` is valid, undefined/null is invalid
+        if (field.type === "toggle") return value !== undefined;
+
+        // For other fields (text, selector, etc.)
+        return value !== undefined && value !== null && value !== "";
+      });
+  }, [currentSection, formState]);
+
+
 
   return (
     <View
@@ -231,7 +250,7 @@ export default function SectionPage() {
               {/* BACK Button */}
               <Button
                 className="flex-1 border border-accent-primary bg-background-primary py-4 rounded-2xl gap-3"
-                onPress={() => router.dismissTo("/projects")}
+                onPress={() => setDialogOpen(true)}
               >
                 <Text className="text-accent-primary font-base font-open-sans-bold">
                   Cancel
@@ -242,6 +261,7 @@ export default function SectionPage() {
               {/* NEXT Button */}
               <Button
                 className="bg-accent-primary flex-1 py-4 rounded-2xl gap-2"
+                disabled={!isSectionValid}
                 onPress={() => router.push(finalNextRoute)}
               >
                 <Text className="text-white font-base font-open-sans-bold">
@@ -263,6 +283,30 @@ export default function SectionPage() {
           </View>
         </ScrollView>
       </KeyboardAvoidingView>
+
+
+      <Dialog.Root open={isDialogOpen} onOpenChange={setDialogOpen}>
+        <Dialog.Portal>
+          <Dialog.Content className="py-2 px-4" showCloseButton={false}>
+            <Dialog.Header className="pt-10" title="Are you sure you want to exit? Field Changes will be lost."/>
+            <Dialog.Footer className="flex-row gap-2">
+              <Button
+                className="border border-accent-primary bg-background-primary py-4 px-6 rounded-2xl"
+                onPress={() => setDialogOpen(false)}
+              >
+                <Text className="text-accent-primary font-bold">Cancel</Text>
+              </Button>
+              <Button
+                className="bg-accent-primary py-4 px-6 rounded-2xl"
+                onPress={() => router.dismissTo("/projects")}
+              >
+                <Text className="text-white font-bold">Exit</Text>
+              </Button>
+            </Dialog.Footer>
+          </Dialog.Content>
+        </Dialog.Portal>
+      </Dialog.Root>
+
     </View>
   );
 }

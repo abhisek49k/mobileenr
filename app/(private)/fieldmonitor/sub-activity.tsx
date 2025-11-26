@@ -13,11 +13,13 @@ import {
 } from '@/components/ui/Dropdown';
 import { useRouter } from 'expo-router';
 import { useThemeColors } from '@/hooks/useThemeColors';
+import { useProjectStore } from '@/store/projects/useProjectStore';
 
 export default function Step2SubActivity() {
     const [subActivity, setSubActivity] = useState('');
     const router = useRouter();
     const colorTheme = useThemeColors();
+    const { selectedProject } = useProjectStore();
 
     return (
         <View className="flex-1 bg-background-secondary">
@@ -34,12 +36,9 @@ export default function Step2SubActivity() {
             />
 
             <View className="flex-1 px-8">
-                <View className='mt-10'>
-                    <Text className="text-2xl font-bold text-accent-primary text-center leading-8">
-                        Hurricane Ian COJ Debris
-                    </Text>
-                    <Text className="text-2xl font-bold text-accent-primary text-center leading-8 mb-12">
-                        Monitoring Services
+                <View className="items-center justify-center p-4 mb-8">
+                    <Text className="text-2xl font-bold text-center text-text-secondary">
+                        {selectedProject?.name}
                     </Text>
                 </View>
 
