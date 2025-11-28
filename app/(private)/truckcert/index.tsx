@@ -30,6 +30,7 @@ import {
 import { Label } from "@/components/ui/Label";
 import { TextField } from "@/components/ui/TextField";
 import { useProjectStore } from "@/store/projects/useProjectStore";
+import MenuIcon from "@/components/menuIcon";
 
 // --- Main Review Screen ---
 const AssignProjectScreen = () => {
@@ -100,6 +101,7 @@ const AssignProjectScreen = () => {
             Truck Certification
           </Text>
         }
+        headerRight={<MenuIcon/>}
       />
 
       {/* Screen Indicator and Title */}

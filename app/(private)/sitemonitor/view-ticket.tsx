@@ -6,6 +6,7 @@ import Button from '@/components/ui/Button';
 import { useRouter } from 'expo-router';
 import { ChevronLeft } from 'lucide-react-native';
 import { useThemeColors } from '@/hooks/useThemeColors';
+import MenuIcon from '@/components/menuIcon';
 
 let debrisType = "Vegetative"
 
@@ -34,6 +35,7 @@ const ViewDisposalTickets = () => {
             Disposal Tickets
           </Text>
         }
+        headerRight={<MenuIcon/>}
       />
       <KeyboardAvoidingView
         behavior={Platform.OS === "ios" ? "padding" : "height"}

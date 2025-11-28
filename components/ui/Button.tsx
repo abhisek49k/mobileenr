@@ -73,6 +73,7 @@ export const Button: React.FC<ButtonProps> = ({
 
   return (
     <AnimatedPressable
+      key={loading.toString()}
       style={animatedStyle}
       className={finalClassName}
       onPressIn={handlePressIn}

@@ -26,6 +26,7 @@ export default function LoginScreen() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
     const { login }  =  useAuthStore()
 
     // --- Refs for focusing inputs when labels are pressed ---
@@ -35,6 +36,18 @@ export default function LoginScreen() {
     const togglePasswordVisibility = () => {
         setIsPasswordVisible(prevState => !prevState);
     };
+
+    const onLogin = () => {
+        setIsLoading(true);
+        try {
+            setTimeout(() => {
+                setIsLoading(false)
+                login();
+            }, 2000)
+        } catch (error) {
+            
+        }
+    }
 
     return (
         <View className="flex-1 bg-background-secondary">
@@ -116,8 +129,10 @@ export default function LoginScreen() {
 
                         {/* --- Login Button --- */}
                         <Button
-                            className="w-full py-4 rounded-[14px] mt-2" // Adjusted padding and rounding
-                            onPress={login}
+                            className="w-full py-4 rounded-[14px] mt-2" 
+                            loading={isLoading}
+                            disabled={isLoading}
+                            onPress={onLogin}
                         >
                             <Text className="text-lg font-semibold text-white">Login</Text>
                         </Button>

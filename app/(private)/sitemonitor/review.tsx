@@ -36,6 +36,7 @@ import { useThemeColors } from "@/hooks/useThemeColors";
 // NOTE: Ensure these paths and types match your actual store implementation.
 import { useSiteMonitorStore } from "@/store/site-monitor/useSiteMonitorStore";
 import { useSiteMonitorSchemaStore } from "@/store/site-monitor/useSiteMonitorSchemaStore";
+import MenuIcon from "@/components/menuIcon";
 
 // --- TYPE DEFINITIONS (Based on previous conversation's schema) ---
 type FieldType = 'text' | 'scan' | 'dropdown' | 'number' | 'imageUpload' | 'textarea' | 'toggle';
@@ -354,6 +355,7 @@ const SiteMonitorReviewScreen = () => {
                         Site Monitor Review
                     </Text>
                 }
+                headerRight={<MenuIcon/>}
             />
 
             <ScrollView contentContainerStyle={{ flexGrow: 1 }}>

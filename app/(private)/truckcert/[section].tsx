@@ -21,6 +21,7 @@ import { useTruckFormStore } from "@/store/truck-certification/useTruckStore";
 import { useTruckSchemaStore } from "@/store/truck-certification/useTruckSchemaStore";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { Dialog } from "@/components/ui/Dialog";
+import MenuIcon from "@/components/menuIcon";
 
 // --- Type Definitions for Schema (Required for the dynamic logic) ---
 interface FieldOption {
@@ -212,6 +213,7 @@ export default function SectionPage() {
             Truck Certification
           </Text>
         }
+        headerRight={<MenuIcon/>}
       />
 
       {/* Screen Indicator and Title */}

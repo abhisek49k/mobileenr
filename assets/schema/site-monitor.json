@@ -1,7 +1,7 @@
 {
-  "formId": "site-monitor-form-v1",
+  "formId": "site-monitor-form-v4",
   "title": "Site Monitor Form",
-  "version": 2.0,
+  "version": 4.0,
   "createdAt": "2025-11-10T10:00:00Z",
   "updatedAt": "2025-11-10T20:00:00Z",
   "types": {
@@ -12,8 +12,8 @@
           "id": "disposal_site",
           "name": "disposal_site",
           "label": "Disposal Site",
-          "type": "text",
-          "required": false,
+          "type": "textarea",
+          "required": true,
           "editable": false
         },
         {
@@ -95,8 +95,8 @@
           "id": "disposal_site",
           "name": "disposal_site",
           "label": "Disposal Site",
-          "type": "text",
-          "required": false,
+          "type": "textarea",
+          "required": true,
           "editable": false
         },
         {
@@ -178,8 +178,8 @@
           "id": "disposal_site",
           "name": "disposal_site",
           "label": "Disposal Site",
-          "type": "text",
-          "required": false,
+          "type": "textarea",
+          "required": true,
           "editable": false
         },
         {
@@ -261,8 +261,8 @@
           "id": "disposal_site",
           "name": "disposal_site",
           "label": "Disposal Site",
-          "type": "text",
-          "required": false,
+          "type": "textarea",
+          "required": true,
           "editable": false
         },
         {
@@ -358,8 +358,8 @@
           "id": "disposal_site",
           "name": "disposal_site",
           "label": "Disposal Site",
-          "type": "text",
-          "required": false,
+          "type": "textarea",
+          "required": true,
           "editable": false
         },
         {
@@ -441,8 +441,8 @@
           "id": "disposal_site",
           "name": "disposal_site",
           "label": "Disposal Site",
-          "type": "text",
-          "required": false,
+          "type": "textarea",
+          "required": true,
           "editable": false
         },
         {
@@ -531,8 +531,8 @@
           "id": "disposal_site",
           "name": "disposal_site",
           "label": "Disposal Site",
-          "type": "text",
-          "required": false,
+          "type": "textarea",
+          "required": true,
           "editable": false
         },
         {
@@ -614,8 +614,8 @@
           "id": "disposal_site",
           "name": "disposal_site",
           "label": "Disposal Site",
-          "type": "text",
-          "required": false,
+          "type": "textarea",
+          "required": true,
           "editable": false
         },
         {
@@ -683,8 +683,8 @@
           "id": "disposal_site",
           "name": "disposal_site",
           "label": "Disposal Site",
-          "type": "text",
-          "required": false,
+          "type": "textarea",
+          "required": true,
           "editable": false
         },
         {
@@ -766,8 +766,8 @@
           "id": "disposal_site",
           "name": "disposal_site",
           "label": "Disposal Site",
-          "type": "text",
-          "required": false,
+          "type": "textarea",
+          "required": true,
           "editable": false
         },
         {
@@ -849,8 +849,8 @@
           "id": "disposal_site",
           "name": "disposal_site",
           "label": "Disposal Site",
-          "type": "text",
-          "required": false,
+          "type": "textarea",
+          "required": true,
           "editable": false
         },
         {

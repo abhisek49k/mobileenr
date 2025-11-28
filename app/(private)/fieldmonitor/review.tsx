@@ -34,6 +34,7 @@ import { useFieldMonitorStore } from "@/store/field-monitor/useFieldMonitorStore
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useThemeColors } from "@/hooks/useThemeColors";
 import { useFieldMonitorSchemaStore } from "@/store/field-monitor/fieldMonitorSchemaStore";
+import MenuIcon from "@/components/menuIcon";
 
 
 const ImagePreviewRow: React.FC<{
@@ -295,6 +296,7 @@ const FieldMonitorReviewScreen = () => {
             Field Monitor Review
           </Text>
         }
+        headerRight={<MenuIcon/>}
       />
 
       <ScrollView

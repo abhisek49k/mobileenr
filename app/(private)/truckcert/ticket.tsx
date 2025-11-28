@@ -30,6 +30,7 @@ import QRCodeStyled from "react-native-qrcode-styled";
 import { useProjectStore } from "@/store/projects/useProjectStore";
 import { useTruckFormStore } from "@/store/truck-certification/useTruckStore";
 import { compressTruckCert } from "@/utils/truck";
+import MenuIcon from "@/components/menuIcon";
 
 // ----------------------------------------------------------------
 // --- START: TICKET INFO COMPONENTS (IMPROVED) ---
@@ -258,6 +259,7 @@ const SignatureScreen = () => {
             Truck Certification
           </Text>
         }
+        headerRight={<MenuIcon/>}
       />
 
       {/* Sub-header */}

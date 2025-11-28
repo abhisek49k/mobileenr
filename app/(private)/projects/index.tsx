@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, FlatList } from "react-native";
+import { View, Text, FlatList, Pressable } from "react-native";
 import { useRouter } from "expo-router";
 import Header from "@/components/ui/Header";
 import { Project, ProjectListItem } from "@/components/ProjectListItem";
@@ -7,10 +7,17 @@ import { useProjectStore } from "@/store/projects/useProjectStore";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { MOCK_PROJECTS } from "@/constants";
 
+import MaterialIcons from '@expo/vector-icons/MaterialIcons';
+import { useThemeColors } from "@/hooks/useThemeColors";
+import MenuIcon from "@/components/menuIcon";
+
 export default function ProjectsScreen() {
+
+  const colorTheme = useThemeColors();
   const router = useRouter();
   const insets = useSafeAreaInsets();
   const setProject = useProjectStore((state) => state.setProject);
+  
 
   const handleProjectPress = (project: Project) => {
     setProject(project); // store full project data
@@ -31,6 +38,7 @@ export default function ProjectsScreen() {
             EZ Debris
           </Text>
         }
+        headerRight={<MenuIcon/>}
       />
       <FlatList
         data={MOCK_PROJECTS}

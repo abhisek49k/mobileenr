@@ -15,6 +15,7 @@ import { useThemeColors } from "@/hooks/useThemeColors";
 import { Card } from "@/components/ui/Card";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useProjectStore } from "@/store/projects/useProjectStore";
+import MenuIcon from "@/components/menuIcon";
 
 export default function ProjectDetailScreen() {
   const colorTheme = useThemeColors();
@@ -44,6 +45,7 @@ export default function ProjectDetailScreen() {
             EZ Debris
           </Text>
         }
+        headerRight={<MenuIcon/>}
       />
       <View className="flex-1">
         <View className="items-center justify-center p-4">

@@ -59,7 +59,7 @@ const ComponentMap: Record<
         value={String(value || "")}
         onChangeText={onChange}
         className="mt-2"
-        editable={field.editable}
+        disabled={!field.editable}
       />
     </View>
   ),
@@ -74,7 +74,7 @@ const ComponentMap: Record<
         className="mt-2"
         multiline
         textAlignVertical="top"
-        editable={field.editable}
+        disabled={!field.editable}
       />
     </View>
   ),
@@ -88,7 +88,7 @@ const ComponentMap: Record<
         onChangeText={onChange}
         keyboardType="numeric"
         className="mt-2"
-        editable={field.editable}
+        disabled={!field.editable}
       />
     </View>
   ),
@@ -195,8 +195,6 @@ export function FieldMonitorFormRenderer({
   const loadDefaults = useFieldMonitorStore((s) => s.loadDefaults);
   const selectedDebris = useProjectStore((s) => s.selectedDebris);
   const selectedType = selectedDebris?.value;
-
-  console.log(schema,"---- schema ---- field ---monitor --- new", selectedDebris)
 
   useEffect(() => {
     if (schema && selectedType) {

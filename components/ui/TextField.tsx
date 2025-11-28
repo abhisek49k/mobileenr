@@ -123,7 +123,7 @@ const Root = forwardRef<RNTextInput, TextFieldRootProps>(
             className={cn(
               "relative h-14 w-full justify-center rounded-xl border",
               disabled ? "bg-[#E6E6E6]" : "bg-background-primary shadow-sm",
-              props.multiline && "h-auto min-h-[56px]",
+              props.multiline && "h-[120px] min-h-[56px]",
               className
             )}
             // Add pointerEvents here to ensure the text input below can be focused

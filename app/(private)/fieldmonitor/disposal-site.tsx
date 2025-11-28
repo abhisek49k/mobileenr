@@ -14,6 +14,7 @@ import {
 import { useRouter } from 'expo-router';
 import { useThemeColors } from '@/hooks/useThemeColors';
 import { useProjectStore } from '@/store/projects/useProjectStore';
+import MenuIcon from '@/components/menuIcon';
 
 export default function Step3DisposalSite() {
     const [disposalSite, setDisposalSite] = useState('');
@@ -33,6 +34,7 @@ export default function Step3DisposalSite() {
                     </Button>
                 }
                 headerCenter={<Text className="text-[22px] font-semibold text-white font-open-sans-bold">Field Monitor</Text>}
+                headerRight={<MenuIcon/>}
             />
 
             <View className="flex-1 px-8">

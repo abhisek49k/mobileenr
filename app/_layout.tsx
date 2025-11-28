@@ -27,9 +27,9 @@ export default function RootLayout() {
   const setOnline = useNetworkStore((state) => state.setOnline);
   const router = useRouter();
   const { loading, syncSchema } = useTruckSchemaStore();
-  const { loading: fieldLoading, syncSchema: syncfieldSchema} = useFieldMonitorSchemaStore()
-  const { loading: siteLoading, syncSchema: syncsiteSchema} = useSiteMonitorSchemaStore()
-  const { isLoggedIn }  =  useAuthStore()
+  const { loading: fieldLoading, syncSchema: syncfieldSchema } = useFieldMonitorSchemaStore()
+  const { loading: siteLoading, syncSchema: syncsiteSchema } = useSiteMonitorSchemaStore()
+  const { isLoggedIn } = useAuthStore()
 
   // console.log("🚀 remoteData", schema, loading);
 
@@ -65,7 +65,10 @@ export default function RootLayout() {
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
       <SafeAreaProvider>
-        <Stack>
+        <Stack
+          screenOptions={{
+            animation: 'none'
+          }}>
           {/* These screens are only available when *not* logged in */}
           <Stack.Protected guard={!isLoggedIn}>
             <Stack.Screen name="(public)" options={{ headerShown: false }} />

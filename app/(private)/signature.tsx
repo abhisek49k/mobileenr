@@ -14,6 +14,7 @@ import {
 import { useThemeColors } from "@/hooks/useThemeColors";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useProjectStore } from "@/store/projects/useProjectStore";
+import MenuIcon from "@/components/menuIcon";
 
 const SignatureScreen = () => {
   const router = useRouter();
@@ -62,6 +63,7 @@ const SignatureScreen = () => {
             {selectedTicket?.label}
           </Text>
         }
+        headerRight={<MenuIcon/>}
       />
 
       {/* Sub-header */}

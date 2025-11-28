@@ -60,7 +60,7 @@ const ComponentMap: Record<
         value={String(value || "")}
         onChangeText={onChange}
         className="mt-2"
-        editable={field.editable}
+        disabled={!field.editable}
       />
     </View>
   ),
@@ -75,7 +75,7 @@ const ComponentMap: Record<
         className="mt-2"
         multiline
         textAlignVertical="top"
-        editable={field.editable}
+        disabled={!field.editable}
       />
     </View>
   ),
@@ -89,7 +89,7 @@ const ComponentMap: Record<
         onChangeText={onChange}
         keyboardType="numeric"
         className="mt-2"
-        editable={field.editable}
+        disabled={!field.editable}
       />
     </View>
   ),
@@ -186,18 +186,15 @@ const ComponentMap: Record<
 
 export function SiteMonitorFormRenderer({
   schema,
-  selectedType
 }: {
   schema: SiteMonitorSchema | undefined;
-  selectedType: string;
 }) {
 
 
   const formState = useSiteMonitorStore((s) => s.values);
   const setValue = useSiteMonitorStore((s) => s.setValue);
   const loadDefaults = useSiteMonitorStore((s) => s.loadDefaults);
-
-  console.log(schema,"---- schema ---- Site ---monitor --- new", selectedType)
+  const selectedType = "Vegetative";
 
   useEffect(() => {
     if (schema && selectedType) {

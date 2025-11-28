@@ -36,6 +36,7 @@ import { useTruckSchemaStore } from "@/store/truck-certification/useTruckSchemaS
 import { useThemeColors } from "@/hooks/useThemeColors";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useProjectStore } from "@/store/projects/useProjectStore";
+import MenuIcon from "@/components/menuIcon";
 
 // --- Helper Components ---
 const SectionCard: React.FC<{
@@ -384,6 +385,7 @@ const ReviewScreen = () => {
             Truck Certification
           </Text>
         }
+        headerRight={<MenuIcon/>}
       />
 
       <ScrollView

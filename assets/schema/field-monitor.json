@@ -1,7 +1,7 @@
 {
-  "formId": "field-monitor-form-v1",
+  "formId": "field-monitor-form-v4",
   "title": "Field Monitor Form",
-  "version": 1.0,
+  "version": 4.0,
   "createdAt": "2025-11-10T10:00:00Z",
   "updatedAt": "2025-11-10T20:00:00Z",
   "types": {
@@ -14,15 +14,15 @@
           "label": "Lat / Long",
           "type": "text",
           "required": true,
-          "editable": true
+          "editable": false
         },
         {
           "id": "address",
           "name": "address",
           "label": "Address",
-          "type": "text",
+          "type": "textarea",
           "required": true,
-          "editable": true
+          "editable": false
         },
         {
           "id": "truck_number",
@@ -50,7 +50,8 @@
           "name": "field_monitor_notes",
           "label": "Field Monitor Notes",
           "type": "textarea",
-          "required": false
+          "required": false,
+          "editable": true
         }
       ]
     },
@@ -63,15 +64,15 @@
           "label": "Lat / Long",
           "type": "text",
           "required": true,
-          "editable": true
+          "editable": false
         },
         {
           "id": "address",
           "name": "address",
           "label": "Address",
-          "type": "text",
+          "type": "textarea",
           "required": true,
-          "editable": true
+          "editable": false
         },
         {
           "id": "truck_number",
@@ -106,7 +107,8 @@
           "name": "field_monitor_notes",
           "label": "Field Monitor Notes",
           "type": "textarea",
-          "required": false
+          "required": false,
+          "editable": true
         }
       ]
     },
@@ -118,14 +120,16 @@
           "name": "lat_long",
           "label": "Lat / Long",
           "type": "text",
-          "required": false
+          "required": true,
+          "editable": false
         },
         {
           "id": "address",
           "name": "address",
           "label": "Address",
-          "type": "text",
-          "required": false
+          "type": "textarea",
+          "required": true,
+          "editable": false
         },
         {
           "id": "truck_number",
@@ -160,7 +164,8 @@
           "name": "field_monitor_notes",
           "label": "Field Monitor Notes",
           "type": "textarea",
-          "required": false
+          "required": false,
+          "editable": true
         }
       ]
     },
@@ -178,7 +183,7 @@
           "id": "address",
           "name": "address",
           "label": "Address",
-          "type": "text",
+          "type": "textarea",
           "required": false
         },
         {
@@ -221,7 +226,8 @@
           "name": "field_monitor_notes",
           "label": "Field Monitor Notes",
           "type": "textarea",
-          "required": false
+          "required": false,
+          "editable": true
         }
       ]
     },
@@ -233,14 +239,16 @@
           "name": "lat_long",
           "label": "Lat / Long",
           "type": "text",
-          "required": false
+          "required": true,
+          "editable": false
         },
         {
           "id": "address",
           "name": "address",
           "label": "Address",
-          "type": "text",
-          "required": false
+          "type": "textarea",
+          "required": true,
+          "editable": false
         },
         {
           "id": "truck_number",
@@ -275,7 +283,8 @@
           "name": "field_monitor_notes",
           "label": "Field Monitor Notes",
           "type": "textarea",
-          "required": false
+          "required": false,
+          "editable": true
         }
       ]
     },
@@ -287,14 +296,16 @@
           "name": "lat_long",
           "label": "Lat / Long",
           "type": "text",
-          "required": false
+          "required": true,
+          "editable": false
         },
         {
           "id": "address",
           "name": "address",
           "label": "Address",
-          "type": "text",
-          "required": false
+          "type": "textarea",
+          "required": true,
+          "editable": false
         },
         {
           "id": "truck_number",
@@ -350,7 +361,8 @@
           "name": "field_monitor_notes",
           "label": "Field Monitor Notes",
           "type": "textarea",
-          "required": false
+          "required": false,
+          "editable": true
         }
       ]
     },
@@ -362,14 +374,16 @@
           "name": "lat_long",
           "label": "Lat / Long",
           "type": "text",
-          "required": false
+          "required": true,
+          "editable": false
         },
         {
           "id": "address",
           "name": "address",
           "label": "Address",
-          "type": "text",
-          "required": false
+          "type": "textarea",
+          "required": true,
+          "editable": false
         },
         {
           "id": "truck_number",
@@ -411,7 +425,8 @@
           "name": "field_monitor_notes",
           "label": "Field Monitor Notes",
           "type": "textarea",
-          "required": false
+          "required": false,
+          "editable": true
         }
       ]
     },
@@ -423,14 +438,16 @@
           "name": "lat_long",
           "label": "Lat / Long",
           "type": "text",
-          "required": false
+          "required": true,
+          "editable": false
         },
         {
           "id": "address",
           "name": "address",
           "label": "Address",
-          "type": "text",
-          "required": false
+          "type": "textarea",
+          "required": true,
+          "editable": false
         },
         {
           "id": "truck_number",
@@ -486,7 +503,8 @@
           "name": "field_monitor_notes",
           "label": "Field Monitor Notes",
           "type": "textarea",
-          "required": false
+          "required": false,
+          "editable": true
         }
       ]
     },
@@ -498,14 +516,24 @@
           "name": "lat_long",
           "label": "Lat / Long",
           "type": "text",
-          "required": false
+          "required": true,
+          "editable": false
+        },
+        {
+          "id": "address",
+          "name": "address",
+          "label": "Address",
+          "type": "textarea",
+          "required": true,
+          "editable": false
         },
         {
           "id": "truck_number",
           "name": "truck_number",
           "label": "Truck Number",
           "type": "scan",
-          "required": false
+          "required": true,
+          "editable": false
         },
         {
           "id": "site_directed_to",
@@ -533,7 +561,8 @@
           "name": "field_monitor_notes",
           "label": "Field Monitor Notes",
           "type": "textarea",
-          "required": false
+          "required": false,
+          "editable": true
         }
       ]
     },
@@ -545,14 +574,16 @@
           "name": "lat_long",
           "label": "Lat / Long",
           "type": "text",
-          "required": false
+          "required": true,
+          "editable": false
         },
         {
           "id": "address",
           "name": "address",
           "label": "Address",
-          "type": "text",
-          "required": false
+          "type": "textarea",
+          "required": true,
+          "editable": false
         },
         {
           "id": "truck_number",
@@ -580,7 +611,8 @@
           "name": "field_monitor_notes",
           "label": "Field Monitor Notes",
           "type": "textarea",
-          "required": false
+          "required": false,
+          "editable": true
         }
       ]
     },
@@ -592,14 +624,24 @@
           "name": "lat_long",
           "label": "Lat / Long",
           "type": "text",
-          "required": false
+          "required": true,
+          "editable": false
+        },
+        {
+          "id": "address",
+          "name": "address",
+          "label": "Address",
+          "type": "textarea",
+          "required": true,
+          "editable": false
         },
         {
           "id": "truck_number",
           "name": "truck_number",
           "label": "Truck Number",
           "type": "scan",
-          "required": false
+          "required": true,
+          "editable": false
         },
         {
           "id": "vin_hin",
@@ -620,7 +662,8 @@
           "name": "field_monitor_notes",
           "label": "Field Monitor Notes",
           "type": "textarea",
-          "required": false
+          "required": false,
+          "editable": true
         }
       ]
     },
@@ -632,7 +675,16 @@
           "name": "lat_long",
           "label": "Lat / Long",
           "type": "text",
-          "required": false
+          "required": true,
+          "editable": false
+        },
+        {
+          "id": "address",
+          "name": "address",
+          "label": "Address",
+          "type": "textarea",
+          "required": true,
+          "editable": false
         },
         {
           "id": "truck_number",
@@ -674,7 +726,8 @@
           "name": "field_monitor_notes",
           "label": "Field Monitor Notes",
           "type": "textarea",
-          "required": false
+          "required": false,
+          "editable": true
         }
       ]
     },
@@ -686,7 +739,16 @@
           "name": "lat_long",
           "label": "Lat / Long",
           "type": "text",
-          "required": false
+          "required": true,
+          "editable": false
+        },
+        {
+          "id": "address",
+          "name": "address",
+          "label": "Address",
+          "type": "textarea",
+          "required": true,
+          "editable": false
         },
         {
           "id": "truck_number",
@@ -714,7 +776,8 @@
           "name": "field_monitor_notes",
           "label": "Field Monitor Notes",
           "type": "textarea",
-          "required": false
+          "required": false,
+          "editable": true
         }
       ]
     },
@@ -726,7 +789,16 @@
           "name": "lat_long",
           "label": "Lat / Long",
           "type": "text",
-          "required": false
+          "required": true,
+          "editable": false
+        },
+        {
+          "id": "address",
+          "name": "address",
+          "label": "Address",
+          "type": "textarea",
+          "required": true,
+          "editable": false
         },
         {
           "id": "truck_number",
@@ -754,7 +826,8 @@
           "name": "field_monitor_notes",
           "label": "Field Monitor Notes",
           "type": "textarea",
-          "required": false
+          "required": false,
+          "editable": true
         }
       ]
     }
